@@ -12,17 +12,8 @@ const nextBtn = $('.btn-next')
 const prevBtn = $('.btn-prev')
 let newArray = []
 var isMusic = 'vietnamese'
-
-
-
-
-
 const PlAYER_STORAGE_KEY = "MUSIC_APP";
 const LIST_STORAGE_KEY = "MUSIC_LIST";
-
-
-
-
 const random = $('.btn-random')
 const repeat = $('.btn-repeat')
 let indexArray = []
