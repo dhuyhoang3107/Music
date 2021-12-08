@@ -1,1 +1,631 @@
-var _0x708c=["bind","querySelector","querySelectorAll",".playlist",".cd","header h2",".cd-thumb","#audio",".btn-toggle-play",".player","#progress",".btn-next",".btn-prev","vietnamese","MUSIC_APP","MUSIC_LIST",".btn-random",".btn-repeat","getItem","parse","config","stringify","setItem","B\u01b0\u1edbc Qua Nhau","V\u0169","https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/BuocQuaNhau-Vu-7120388.mp3?st=I9W59X1Odyi9QRGTehWfHg&e=1638708688","https://avatar-nct.nixcdn.com/song/2021/11/19/6/d/9/1/1637317177185.jpg","\xC1i N\u1ed9","Masew, Kh\xF4i V\u0169","https://c1-ex-swe.nixcdn.com/NhacCuaTui1021/AiNo1-MasewKhoiVu-7078913.mp3?st=ngcoKLRyRorVu8KqUeS1wg&e=1638762705","https://avatar-nct.nixcdn.com/song/2021/08/30/2/1/a/e/1630316309035.jpg","Mu\u1ed9n R\u1ed3i M\xE0 Sao C\xF2n","S\u01a1n T\xF9ng M-TP","https://c1-ex-swe.nixcdn.com/Believe_Audio19/MuonRoiMaSaoCon-SonTungMTP-7011803.mp3?st=tD-Ln6qGqkdH659AeuHsjQ&e=1638782546","https://avatar-nct.nixcdn.com/song/2021/04/29/9/1/f/8/1619691182261.jpg","Th\u1ee9c Gi\u1ea5c","Da LAB","https://c1-ex-swe.nixcdn.com/NhacCuaTui1018/ThucGiac-DaLAB-7048212.mp3?st=1LcQhTisk8WrOQuzK4p86Q&e=1638782708","https://avatar-nct.nixcdn.com/song/2021/07/14/8/c/f/9/1626231010810.jpg","\u0110\u1ed9 T\u1ed9c 2","Masew, \u0110\u1ed9 Mixi, Ph\xFAc Du, Ph\xE1o","https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/DoToc2-MasewDoMixiPhucDuPhao-7064730.mp3?st=ehahZN3-iX9xYdBFgDgGcg&e=1638782785","https://avatar-nct.nixcdn.com/song/2021/08/10/b/2/e/0/1628579601228.jpg","Ch\xFAng Ta Sau N\xE0y","T.R.I","https://c1-ex-swe.nixcdn.com/NhacCuaTui1010/ChungTaSauNay-TRI-6929586.mp3?st=l56Wr1fLE9fMnFehhpo5xg&e=1638782875","https://avatar-nct.nixcdn.com/song/2021/01/27/5/2/2/b/1611738358661.jpg","D\u1ecbu D\xE0ng Em \u0110\u1ebfn","ERIK, NinjaZ","https://c1-ex-swe.nixcdn.com/NhacCuaTui1021/DiuDangEmDen-ERIKNinjaZ-7078877.mp3?st=QmjyqbnGv3jClPKm4oA1YQ&e=1638782938","https://avatar-nct.nixcdn.com/song/2021/08/30/2/1/a/e/1630307726211.jpg","H\u01b0\u01a1ng","V\u0103n Mai H\u01b0\u01a1ng, Negav","https://c1-ex-swe.nixcdn.com/NhacCuaTui1010/Huong-VanMaiHuongNegav-6927340.mp3?st=PvHOWlRnF6TymvggYGding&e=1638783027","https://avatar-nct.nixcdn.com/song/2021/01/22/9/f/2/1/1611280898757.jpg","Mi\xEAn Man","DUTZUX","https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/MienMan-DUTZUX-7120884.mp3?st=yTOFq5aH8FGEvbm-_n_KTA&e=1638783090","https://avatar-nct.nixcdn.com/song/2021/11/19/6/d/9/1/1637320885751.jpg","c\xF3 h\u1eb9n v\u1edbi thanh xu\xE2n","MONSTAR","https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/cohenvoithanhxuan-MONSTAR-7050201.mp3?st=PjrrnZ2dZ3ffA6R7dRrppQ&e=1638783161","https://avatar-nct.nixcdn.com/song/2021/07/16/f/4/9/8/1626425507034.jpg","Stay","The Kid LAROI, Justin Bieber","https://c1-ex-swe.nixcdn.com/NhacCuaTui1018/Stay-TheKidLAROIJustinBieber-7045258.mp3?st=tDMLXwH5rcrkO9nF-Y0mWA&e=1638769802","https://avatar-nct.nixcdn.com/song/2021/07/09/5/5/8/2/1625815274622.jpg","All Too Well","Taylor Swift","https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/AllTooWell10MinuteVersionTaylorsVersion-TaylorSwift-7120438.mp3?st=moySlM-gRk8kpSEQdA729g&e=1638673508","https://avatar-nct.nixcdn.com/song/2021/11/23/d/a/a/e/1637643196932_300.jpg","Equal In The Darkness","Steve Aoki, Th\xE1i Y L\xE2m (Jolin Tsai), MAX","https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/EqualInTheDarkness-SteveAokiThaiYLamJolinTsaiMAX-7116228.mp3?st=1TO5aq2W9pnBPnKJ-0BwLA&e=1638673651","https://avatar-nct.nixcdn.com/song/2021/10/27/0/c/c/3/1635299658476_300.jpg","Always Love You","Elton John, Young Thug, Nicki Minaj","https://c1-ex-swe.nixcdn.com/Unv_Audio203/AlwaysLoveYou-EltonJohnYoungThugNickiMinaj-7114807.mp3?st=FjWol1PzZ4cmEPzH-8rKdQ&e=1638673737","https://avatar-nct.nixcdn.com/song/2021/10/21/c/d/d/a/1634797395961.jpg","Wildest Dreams (Taylor\'s Version)","https://c1-ex-swe.nixcdn.com/NhacCuaTui1022/WildestDreamsTaylorsVersion-TaylorSwift-7090980.mp3?st=MqTkbQYsSI-Wri68OiCggA&e=1638673817","https://avatar-nct.nixcdn.com/song/2021/09/17/5/a/b/4/1631889063619_300.jpg","Lonely","Justin Bieber, Benny Blanco","https://c1-ex-swe.nixcdn.com/Unv_Audio197/Lonely-JustinBieberbennyblanco-6993497.mp3?st=HfdveKXgMQiQEl5_nrafHg&e=1638784621","https://avatar-nct.nixcdn.com/song/2020/10/16/7/4/6/2/1602823109092.jpg","Intentions","Justin Bieber, Quavo","https://c1-ex-swe.nixcdn.com/NhacCuaTui995/Intentions-JustinBieberQuavo-6217997.mp3?st=hcdpQpM3beevQ-_6KJ82dA&e=1638784782","https://avatar-nct.nixcdn.com/song/2020/02/07/2/0/7/2/1581052824234.jpg","Hold On","Justin Bieber, Dominic Fike","https://c1-ex-swe.nixcdn.com/Unv_Audio201/HoldOn-JustinBieber-7103059.mp3?st=Jb7CePADDk5Lz9NMD9pSAQ&e=1638784678","https://avatar-nct.nixcdn.com/song/2021/03/05/2/1/7/c/1614931554567.jpg","Monster","Shawn Mendes, Justin Bieber","https://c1-ex-swe.nixcdn.com/Unv_Audio188/Monster-ShawnMendesJustinBieber-6838261.mp3?st=w65iy6S0b1mtDlUnsZOceA&e=1638784732","https://avatar-nct.nixcdn.com/song/2020/11/23/0/2/3/c/1606100084558.jpg","All Around Me","Justin Bieber","https://c1-ex-swe.nixcdn.com/NhacCuaTui995/AllAroundMe-JustinBieber-6223828.mp3?st=vvGCbil4vC_5l_05XNgOtw&e=1638873647","https://avatar-nct.nixcdn.com/song/2020/02/14/a/9/d/b/1581658518670.jpg","Haru Haru","BIGBANG","https://c1-ex-swe.nixcdn.com/YG_Audio1/HaruHaru-BIGBANG-6291516.mp3?st=Gspt0qSx7rVZoYeM-x2jXA&e=1638783344","https://avatar-nct.nixcdn.com/song/2020/06/09/2/d/0/7/1591688793624.jpg","Loser","https://c1-ex-swe.nixcdn.com/YG_Audio1/Loser-BIGBANG-6291940.mp3?st=Lhof5KoX62zevt2ZEXBP-A&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734574215.jpg","Let\'S Not Fall In Love","https://c1-ex-swe.nixcdn.com/YG_Audio1/LetSNotFallInLove-BIGBANG-6292282.mp3?st=fcFmzvoy9t6mhv487BnahA&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734613690.jpg","Blue","https://c1-ex-swe.nixcdn.com/YG_Audio1/Blue-BIGBANG-6292792.mp3?st=g0jDh_aS0bi75C3ZD9FhvA&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/08/08/1/e/0/1/1565247252132.jpg","Bang Bang Bang","https://c1-ex-swe.nixcdn.com/YG_Audio1/BangBangBang-BIGBANG-6293092.mp3?st=6I573fkPVGoqOxI43cIGVw&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734586323.jpg","If You","https://c1-ex-swe.nixcdn.com/YG_Audio1/IfYou-BIGBANG-6292294.mp3?st=xp-NrUXRQJTWzQabivltww&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734599196.jpg","Horang Suwolga","Sangnoksu, Narae","https://c1-ex-swe.nixcdn.com/NhacCuaTui1005/HorangSuwolga-SangnoksuNarae-6770371.mp3?st=Ks8apkixAmM2J_Yr8k0-eA&e=1638783344","https://avatar-nct.nixcdn.com/song/2020/12/14/5/c/b/a/1607915686599.jpg","Celebrity","IU","https://c1-ex-swe.nixcdn.com/NhacCuaTui1011/Celebrity-IU-6938138.mp3?st=iM5VWwaQtj1ImVGkz3bq8Q&e=1638783344","https://avatar-nct.nixcdn.com/song/2021/03/01/7/7/d/0/1614570355625.jpg","Blueming","https://c1-ex-swe.nixcdn.com/NhacCuaTui992/Blueming-IU-6138404.mp3?st=HGiSqSggzq_yx7A8dWC5aQ&e=1638783344","https://avatar-nct.nixcdn.com/song/2019/11/18/b/0/e/0/1574073260102.jpg","Love Scenario","iKON","https://c1-ex-swe.nixcdn.com/YG_Audio1/LoveScenario-iKON-6292220.mp3?st=GquH-Wmqa8cjZfNqRgIM7w&e=1638783344","https://avatar-nct.nixcdn.com/song/2018/01/25/5/2/d/e/1516873006451.jpg","M\u1ea1c Ly / \u83ab\u79bb (Gia Nam Truy\u1ec7n OST)","C\xFAc T\u1ecbnh Y (Ju Jing Yi)","https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/MacLyGiaNamTruyenOST-CucTinhYJuJingYi-7114103.mp3?st=1kYhMVrtp1prZDQLxMbXzQ&e=1638784935","https://avatar-nct.nixcdn.com/song/2021/10/26/8/1/f/e/1635241730249.jpg","Tay Tr\xE1i Ch\u1ec9 Tr\u0103ng / \u5de6\u624b\u6307\u6708","T\xE1t \u0110\u1ec9nh \u0110\u1ec9nh (Sa Ding Ding)","https://c1-ex-swe.nixcdn.com/NhacCuaTui962/TayTraiChiTrang-TatDinhDinhSaDingDing-5431513.mp3?st=R7nm-Q6FxpUL0UxCDMq2ig&e=1638784935","https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786602391.jpg","S\u1ee9 Thanh Hoa / \u9752\u82b1\u74f7","Ch\xE2u Ki\u1ec7t Lu\xE2n (Jay Chou)","https://c1-ex-swe.nixcdn.com/NhacCuaTui964/SuThanhHoa-ChauKietLuanJayChou-108110.mp3?st=ieBMFvjQWp7apqOrblPsiQ&e=1638784935","https://avatar-nct.nixcdn.com/song/2019/08/07/3/6/d/a/1565165369019.jpg","Phi \u0110i\u1ec3u V\xE0 Ve S\u1ea7u / \u98de\u9e1f\u548c\u8749","Nh\u1eadm Nhi\xEAn","https://c1-ex-swe.nixcdn.com/NhacCuaTui1000/ChimBayCungVe-NhamNhien-6321767.mp3?st=OPJVhLrpz3u1cVbknHRjzw&e=1638784935","https://avatar-nct.nixcdn.com/song/2020/07/03/8/9/c/9/1593752079734.jpg","Mang Ch\u1ee7ng / \u8292\u79cd","\xC2m Khuy\u1ebft Thi Th\xEDnh, Tri\u1ec7u Ph\u01b0\u01a1ng T\u1ecbnh (Zhao Fangjing)","https://c1-ex-swe.nixcdn.com/NhacCuaTui983/MangChung-TrieuPhuongTinhAmKhuyetThiThinh-5989054.mp3?st=9WINGtCn0ciu3GtGJODdrQ&e=1638784935","https://avatar-nct.nixcdn.com/song/2019/08/05/1/9/9/6/1565016156395.jpg","\u0110\u1ed3ng Tho\u1ea1i","Quang L\u01b0\u01a1ng (Michael Wong)","https://c1-ex-swe.nixcdn.com/NhacCuaTui946/DongThoai-MichaelWongQuangLuong-161624.mp3?st=lVaJblR1dnRj2csOFwvkRA&e=1638784935","https://avatar-nct.nixcdn.com/song/2019/08/07/3/6/d/a/1565163727207.jpg","V\xF4 Ngu / \u65e0\u865e (Ch\xE2u Sinh Nh\u01b0 C\u1ed1 Ost)","L\xFD T\u1eed \u0110\xECnh (Mimi Lee), T\u1ec9nh Lung (Jing Long)","https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/VoNguChauSinhNhuCoOst-LyTuDinhMimiLeeTinhLungJingLong-7075326.mp3?st=H_9Pz6muAHchS9Pn6n3-qA&e=1638784935","https://avatar-nct.nixcdn.com/song/2021/08/26/6/5/8/f/1629966116215.jpg","\xC1i Th\u01b0\u01a1ng","\u0110\u1ed5ng Trinh (Dong Zhen)","https://c1-ex-swe.nixcdn.com/NhacCuaTui155/AiThuong-DongTrinh_35bzb.mp3?st=xwSnK7z8klRBvJR4sKuo3Q&e=1638784935","https://avatar-nct.nixcdn.com/singer/avatar/2017/03/22/7/e/b/2/1490170353513.jpg","B\u1ea5t Nhi\u1ec5m / \u4e0d\u67d3 (H\u01b0\u01a1ng M\u1eadt T\u1ef1a Kh\xF3i S\u01b0\u01a1ng OST)","Mao B\u1ea5t D\u1ecbch (Mao Bu Yi)","https://c1-ex-swe.nixcdn.com/NhacCuaTui960/BatNhiem-MaoBatDichMaoBuyi-5393965.mp3?st=-66MXvOtm335TBJ4NHba5Q&e=1638784935","https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786553828.jpg","Thi\u1ebfu Ni\xEAn / \u5c11\u5e74","M\u1ed9ng Nhi\xEAn (Meng Ran)","https://c1-ex-swe.nixcdn.com/NhacCuaTui996/ThieuNien-MongNhienMengRan-6238337.mp3?st=izeVhk_T_SP2bFJHAjencQ&e=1638784935","https://avatar-nct.nixcdn.com/song/2020/03/18/3/d/4/9/1584522109605.jpg","offsetWidth","onscroll",".download.active","active","remove","classList","scrollY","scrollTop","documentElement","width","style","px","opacity","none","add",".locationmusic","onclick","isPlaying","pause","play","smooth","center","scrollIntoView",".song.active","scrollToActiveSong","rotate(360deg)","animate","hendleAbumMusic","onplay","playing","onpause","ontimeupdate","duration","currentTime","floor","value","oninput","target","isRandom","randomSong","nextSong","renderSongs","prevSong","onended","isRepeat","toggle","setConfig",".song:not(.active)","closest",".option","","currentIndex","index","dataset","loadCurrentSong",".like","hendleLikeSongs",".download","download","forEach","body","getAttribute","checkCurrentIndex",".locationmusic > .select","innerText","LOVE","length","love","songs","B\u1ea1n ch\u01b0a c\xF3 b\xE0i h\xE1t y\xEAu th\xEDch!!","english","korea","china","handleEvents","select",".locationmusic div","end","textContent","name","backgroundImage","url(","image",")","src","path","\x0D\x0A                <div class=\"song ","\" data-index=\"","\">\x0D\x0A                    <div class=\"thumb\" style=\"background-image: url(\'","\')\">\x0D\x0A                    </div>\x0D\x0A                    <div class=\"body\">\x0D\x0A                        <h3 class=\"title\">","</h3>\x0D\x0A                        <p class=\"author\">","singer","</p>\x0D\x0A                    </div>\x0D\x0A                    <div class=\"option\" data-download=\"","\">\x0D\x0A                        <i class=\"fas fa-ellipsis-h\"></i>\x0D\x0A                        <div class=\"download\" data-download=\"","\">\x0D\x0A                        <a href=\"","\">T\u1ea3i</a>\x0D\x0A                        <a class=\"like ","\" data-name=\"","\" data-path=\"","\" data-image=\"","\"\x0D\x0A                         data-singer=\"","\">","B\u1ecf th\xEDch","Th\xEDch","</a>\x0D\x0A                        </div>\x0D\x0A                    </div>\x0D\x0A                </div>\x0D\x0A                ","map","innerHTML","join","push","\u0110\xE3 th\xEAm v\xE0o danh s\xE1ch y\xEAu th\xEDch","filter","click",".vietnamese","random","includes","loadConfig","start"];const $=document[_0x708c[1]][_0x708c[0]](document);const $$=document[_0x708c[2]][_0x708c[0]](document);const playlist=$(_0x708c[3]);const cd=$(_0x708c[4]);const heading=$(_0x708c[5]);const thumb=$(_0x708c[6]);const audio=$(_0x708c[7]);const playBtn=$(_0x708c[8]);const player=$(_0x708c[9]);const progress=$(_0x708c[10]);const nextBtn=$(_0x708c[11]);const prevBtn=$(_0x708c[12]);let newArray=[];var isMusic=_0x708c[13];const PlAYER_STORAGE_KEY=_0x708c[14];const LIST_STORAGE_KEY=_0x708c[15];const random=$(_0x708c[16]);const repeat=$(_0x708c[17]);let indexArray=[];const app={currentIndex:0,isPlaying:false,isRandom:false,isRepeat:false,config:JSON[_0x708c[19]](localStorage[_0x708c[18]](PlAYER_STORAGE_KEY))|| {},setConfig:function(key,value){this[_0x708c[20]][key]= value;localStorage[_0x708c[22]](PlAYER_STORAGE_KEY,JSON[_0x708c[21]](this[_0x708c[20]]))},songs:{vietnamese:[{name:_0x708c[23],singer:_0x708c[24],path:_0x708c[25],image:_0x708c[26]},{name:_0x708c[27],singer:_0x708c[28],path:_0x708c[29],image:_0x708c[30]},{name:_0x708c[31],singer:_0x708c[32],path:_0x708c[33],image:_0x708c[34]},{name:_0x708c[35],singer:_0x708c[36],path:_0x708c[37],image:_0x708c[38]},{name:_0x708c[39],singer:_0x708c[40],path:_0x708c[41],image:_0x708c[42]},{name:_0x708c[43],singer:_0x708c[44],path:_0x708c[45],image:_0x708c[46]},{name:_0x708c[47],singer:_0x708c[48],path:_0x708c[49],image:_0x708c[50]},{name:_0x708c[51],singer:_0x708c[52],path:_0x708c[53],image:_0x708c[54]},{name:_0x708c[55],singer:_0x708c[56],path:_0x708c[57],image:_0x708c[58]},{name:_0x708c[59],singer:_0x708c[60],path:_0x708c[61],image:_0x708c[62]}],english:[{name:_0x708c[63],singer:_0x708c[64],path:_0x708c[65],image:_0x708c[66]},{name:_0x708c[67],singer:_0x708c[68],path:_0x708c[69],image:_0x708c[70]},{name:_0x708c[71],singer:_0x708c[72],path:_0x708c[73],image:_0x708c[74]},{name:_0x708c[75],singer:_0x708c[76],path:_0x708c[77],image:_0x708c[78]},{name:_0x708c[79],singer:_0x708c[68],path:_0x708c[80],image:_0x708c[81]},{name:_0x708c[82],singer:_0x708c[83],path:_0x708c[84],image:_0x708c[85]},{name:_0x708c[86],singer:_0x708c[87],path:_0x708c[88],image:_0x708c[89]},{name:_0x708c[90],singer:_0x708c[91],path:_0x708c[92],image:_0x708c[93]},{name:_0x708c[94],singer:_0x708c[95],path:_0x708c[96],image:_0x708c[97]},{name:_0x708c[98],singer:_0x708c[99],path:_0x708c[100],image:_0x708c[101]}],korea:[{name:_0x708c[102],singer:_0x708c[103],path:_0x708c[104],image:_0x708c[105]},{name:_0x708c[106],singer:_0x708c[103],path:_0x708c[107],image:_0x708c[108]},{name:_0x708c[109],singer:_0x708c[103],path:_0x708c[110],image:_0x708c[111]},{name:_0x708c[112],singer:_0x708c[103],path:_0x708c[113],image:_0x708c[114]},{name:_0x708c[115],singer:_0x708c[103],path:_0x708c[116],image:_0x708c[117]},{name:_0x708c[118],singer:_0x708c[103],path:_0x708c[119],image:_0x708c[120]},{name:_0x708c[121],singer:_0x708c[122],path:_0x708c[123],image:_0x708c[124]},{name:_0x708c[125],singer:_0x708c[126],path:_0x708c[127],image:_0x708c[128]},{name:_0x708c[129],singer:_0x708c[126],path:_0x708c[130],image:_0x708c[131]},{name:_0x708c[132],singer:_0x708c[133],path:_0x708c[134],image:_0x708c[135]}],china:[{name:_0x708c[136],singer:_0x708c[137],path:_0x708c[138],image:_0x708c[139]},{name:_0x708c[140],singer:_0x708c[141],path:_0x708c[142],image:_0x708c[143]},{name:_0x708c[144],singer:_0x708c[145],path:_0x708c[146],image:_0x708c[147]},{name:_0x708c[148],singer:_0x708c[149],path:_0x708c[150],image:_0x708c[151]},{name:_0x708c[152],singer:_0x708c[153],path:_0x708c[154],image:_0x708c[155]},{name:_0x708c[156],singer:_0x708c[157],path:_0x708c[158],image:_0x708c[159]},{name:_0x708c[160],singer:_0x708c[161],path:_0x708c[162],image:_0x708c[163]},{name:_0x708c[164],singer:_0x708c[165],path:_0x708c[166],image:_0x708c[167]},{name:_0x708c[168],singer:_0x708c[169],path:_0x708c[170],image:_0x708c[171]},{name:_0x708c[172],singer:_0x708c[173],path:_0x708c[174],image:_0x708c[175]}],love:[]},handleEvents:function(isMusic){const cdWidth=cd[_0x708c[176]];const _this=this;document[_0x708c[177]]= function(){if($(_0x708c[178])|| false){$(_0x708c[178])[_0x708c[181]][_0x708c[180]](_0x708c[179])};const scrollTop=window[_0x708c[182]]|| document[_0x708c[184]][_0x708c[183]];const newCdWidth=cdWidth- scrollTop;cd[_0x708c[186]][_0x708c[185]]= newCdWidth> 0?newCdWidth+ _0x708c[187]:0;cd[_0x708c[186]][_0x708c[188]]= newCdWidth/ cdWidth;if(scrollTop> 50){$(_0x708c[191])[_0x708c[181]][_0x708c[190]](_0x708c[189])}else {$(_0x708c[191])[_0x708c[181]][_0x708c[180]](_0x708c[189])}};playBtn[_0x708c[192]]= function(){if(_this[_0x708c[193]]){audio[_0x708c[194]]()}else {audio[_0x708c[195]]();_this[_0x708c[20]][isMusic]> 2?$(_0x708c[199])[_0x708c[198]]({behavior:_0x708c[196],block:_0x708c[197]}):_this[_0x708c[200]](isMusic)}};const animateThumb=cd[_0x708c[202]]([{transform:_0x708c[201]}],{duration:10000,iterations:Infinity});animateThumb[_0x708c[194]]();this[_0x708c[203]](animateThumb);audio[_0x708c[204]]= function(){_this[_0x708c[193]]= true;player[_0x708c[181]][_0x708c[190]](_0x708c[205]);animateThumb[_0x708c[195]]()};audio[_0x708c[206]]= function(){_this[_0x708c[193]]= false;player[_0x708c[181]][_0x708c[180]](_0x708c[205]);animateThumb[_0x708c[194]]()};audio[_0x708c[207]]= function(){if(audio[_0x708c[208]]){const progressPercent=Math[_0x708c[210]]((audio[_0x708c[209]]/ audio[_0x708c[208]])* 100);progress[_0x708c[211]]= progressPercent}};progress[_0x708c[212]]= function(e){const seekTime=(audio[_0x708c[208]]/ 100)* e[_0x708c[213]][_0x708c[211]];audio[_0x708c[209]]= seekTime};nextBtn[_0x708c[192]]= function(){if(_this[_0x708c[214]]){_this[_0x708c[215]](isMusic)};_this[_0x708c[216]](isMusic);_this[_0x708c[217]](isMusic);_this[_0x708c[200]]();audio[_0x708c[195]]()};prevBtn[_0x708c[192]]= function(){if(_this[_0x708c[214]]){_this[_0x708c[215]](isMusic)};_this[_0x708c[218]](isMusic);_this[_0x708c[217]](isMusic);_this[_0x708c[200]]();audio[_0x708c[195]]()};audio[_0x708c[219]]= function(){if(_this[_0x708c[214]]){_this[_0x708c[215]](isMusic);audio[_0x708c[195]]()}else {if(_this[_0x708c[220]]){audio[_0x708c[195]]()}else {nextBtn[_0x708c[192]]()}}};random[_0x708c[192]]= function(){if(_this[_0x708c[220]]){_this[_0x708c[220]]=  !_this[_0x708c[220]];repeat[_0x708c[181]][_0x708c[221]](_0x708c[179],_this[_0x708c[220]]);_this[_0x708c[222]](_0x708c[220],_this[_0x708c[220]])};_this[_0x708c[214]]=  !_this[_0x708c[214]];_this[_0x708c[222]](_0x708c[214],_this[_0x708c[214]]);random[_0x708c[181]][_0x708c[221]](_0x708c[179],_this[_0x708c[214]])};repeat[_0x708c[192]]= function(){if(_this[_0x708c[214]]){_this[_0x708c[214]]=  !_this[_0x708c[214]];random[_0x708c[181]][_0x708c[221]](_0x708c[179],_this[_0x708c[214]]);_this[_0x708c[222]](_0x708c[214],_this[_0x708c[214]])};_this[_0x708c[220]]=  !_this[_0x708c[220]];_this[_0x708c[222]](_0x708c[220],_this[_0x708c[220]]);repeat[_0x708c[181]][_0x708c[221]](_0x708c[179],_this[_0x708c[220]])};playlist[_0x708c[192]]= function(e){const songNode=e[_0x708c[213]][_0x708c[224]](_0x708c[223]);if(songNode&&  !e[_0x708c[213]][_0x708c[224]](_0x708c[225])){isMusic== undefined?isMusic= _0x708c[13]:_0x708c[226];_this[_0x708c[227]]= Number(songNode[_0x708c[229]][_0x708c[228]]);_this[_0x708c[222]](isMusic,_this[_0x708c[227]]);_this[_0x708c[230]](isMusic);_this[_0x708c[217]](isMusic);audio[_0x708c[195]]()};if(e[_0x708c[213]][_0x708c[224]](_0x708c[225])){e[_0x708c[213]][_0x708c[224]](_0x708c[231])?_this[_0x708c[232]](e[_0x708c[213]][_0x708c[224]](_0x708c[231]),isMusic,animateThumb):_0x708c[226];const download=$$(_0x708c[233]);const indexDownload=Number(e[_0x708c[213]][_0x708c[224]](_0x708c[225])[_0x708c[229]][_0x708c[234]]);if(download[indexDownload]){download[indexDownload][_0x708c[181]][_0x708c[221]](_0x708c[179])};if($(_0x708c[178])){download[_0x708c[235]](function(value,index){if(Number(index)!== indexDownload){value[_0x708c[181]][_0x708c[180]](_0x708c[179])}})}}};$(_0x708c[236])[_0x708c[192]]= function(e){if(!e[_0x708c[213]][_0x708c[224]](_0x708c[3])){if($(_0x708c[178])|| false){$(_0x708c[178])[_0x708c[181]][_0x708c[180]](_0x708c[179])}}}},hendleAbumMusic:function(animateThumb){const that=this;$$(_0x708c[251])[_0x708c[235]](function(value){value[_0x708c[192]]= function(e){const valueIsMusic=e[_0x708c[213]][_0x708c[237]](_0x708c[211]);that[_0x708c[238]](isMusic);if(!e[_0x708c[213]][_0x708c[224]](_0x708c[239])){if(e[_0x708c[213]][_0x708c[240]]== _0x708c[241]&& that[_0x708c[244]][_0x708c[243]][_0x708c[242]]=== 0){alert(_0x708c[245])}else {switch(valueIsMusic){case _0x708c[13]:isMusic= _0x708c[13];break;case _0x708c[246]:isMusic= _0x708c[246];break;case _0x708c[247]:isMusic= _0x708c[247];break;case _0x708c[248]:isMusic= _0x708c[248];break;case _0x708c[243]:isMusic= _0x708c[243];break};that[_0x708c[20]][isMusic]== undefined?that[_0x708c[222]](isMusic,0):_0x708c[226];that[_0x708c[20]][isMusic]?that[_0x708c[227]]= that[_0x708c[20]][isMusic]:that[_0x708c[227]]= 0;indexArray= [];progress[_0x708c[211]]= 0;animateThumb[_0x708c[194]]();that[_0x708c[193]]= false;player[_0x708c[181]][_0x708c[180]](_0x708c[205]);cd[_0x708c[186]][_0x708c[185]]= 200+ _0x708c[187];cd[_0x708c[186]][_0x708c[188]]= null;that[_0x708c[217]](isMusic);that[_0x708c[249]](isMusic);that[_0x708c[230]](isMusic);that[_0x708c[216]](isMusic);that[_0x708c[218]](isMusic);$(_0x708c[239])[_0x708c[181]][_0x708c[180]](_0x708c[250]);e[_0x708c[213]][_0x708c[181]][_0x708c[190]](_0x708c[250]);that[_0x708c[20]][isMusic]> 2?$(_0x708c[199])[_0x708c[198]]({behavior:_0x708c[196],block:_0x708c[197]}):that[_0x708c[200]]()}}}})},checkCurrentIndex:function(isMusic){if(this[_0x708c[20]][isMusic]== null){this[_0x708c[20]][isMusic]= 0}},scrollToActiveSong:function(){setTimeout(()=>{$(_0x708c[199])[_0x708c[198]]({behavior:_0x708c[196],block:_0x708c[252]})},300)},loadCurrentSong:function(isMusic){heading[_0x708c[253]]= this[_0x708c[20]][isMusic]?this[_0x708c[244]][isMusic][this[_0x708c[20]][isMusic]][_0x708c[254]]:this[_0x708c[244]][isMusic][this[_0x708c[227]]][_0x708c[254]];thumb[_0x708c[186]][_0x708c[255]]= this[_0x708c[20]][isMusic]?`${_0x708c[256]}${this[_0x708c[244]][isMusic][this[_0x708c[20]][isMusic]][_0x708c[257]]}${_0x708c[258]}`:`${_0x708c[256]}${this[_0x708c[244]][isMusic][this[_0x708c[227]]][_0x708c[257]]}${_0x708c[258]}`;audio[_0x708c[259]]= this[_0x708c[20]][isMusic]?this[_0x708c[244]][isMusic][this[_0x708c[20]][isMusic]][_0x708c[260]]:this[_0x708c[244]][isMusic][this[_0x708c[227]]][_0x708c[260]]},renderSongs:function(music){this[_0x708c[20]][_0x708c[13]]== undefined?this[_0x708c[222]](_0x708c[13],0):_0x708c[226];music== undefined?music= _0x708c[13]:_0x708c[226];const htmls=this[_0x708c[244]][music][_0x708c[279]]((song,index)=>{return `${_0x708c[261]}${index=== this[_0x708c[20]][music]?_0x708c[179]:_0x708c[226]}${_0x708c[262]}${index}${_0x708c[263]}${song[_0x708c[257]]}${_0x708c[264]}${song[_0x708c[254]]}${_0x708c[265]}${song[_0x708c[266]]}${_0x708c[267]}${index}${_0x708c[268]}${index}${_0x708c[269]}${song[_0x708c[260]]}${_0x708c[270]}${this[_0x708c[20]][song[_0x708c[254]]]?_0x708c[179]:_0x708c[226]}${_0x708c[262]}${index}${_0x708c[271]}${song[_0x708c[254]]}${_0x708c[272]}${song[_0x708c[260]]}${_0x708c[273]}${song[_0x708c[257]]}${_0x708c[274]}${song[_0x708c[266]]}${_0x708c[275]}${this[_0x708c[20]][song[_0x708c[254]]]?_0x708c[276]:_0x708c[277]}${_0x708c[278]}`});playlist[_0x708c[280]]= htmls[_0x708c[281]](_0x708c[226])},hendleLikeSongs:function(likeSongs,isMusic,animateThumb){const name=likeSongs[_0x708c[229]][_0x708c[254]];const singer=likeSongs[_0x708c[229]][_0x708c[266]];const path=likeSongs[_0x708c[229]][_0x708c[260]];const image=likeSongs[_0x708c[229]][_0x708c[257]];const index=likeSongs[_0x708c[229]][_0x708c[228]];const listArray={name,singer,path,image};if(likeSongs[_0x708c[240]]=== _0x708c[277]){if(this[_0x708c[244]][_0x708c[243]][_0x708c[242]]>= 0&& isMusic!= _0x708c[246]&& isMusic!= _0x708c[247]&& isMusic!= _0x708c[248]){isMusic= _0x708c[13]};this[_0x708c[244]][_0x708c[243]][_0x708c[282]](listArray);localStorage[_0x708c[22]](LIST_STORAGE_KEY,JSON[_0x708c[21]](this[_0x708c[244]][_0x708c[243]]));this[_0x708c[222]](name,name);this[_0x708c[217]](isMusic);alert(_0x708c[283])}else {if(likeSongs[_0x708c[240]]=== _0x708c[276]){const deleteArray=this[_0x708c[244]][_0x708c[243]][_0x708c[284]](function(value){return value[_0x708c[254]]!= name});const storageMusic=JSON[_0x708c[19]](localStorage[_0x708c[18]](LIST_STORAGE_KEY));newArray= deleteArray;this[_0x708c[244]][_0x708c[243]]= newArray;localStorage[_0x708c[22]](LIST_STORAGE_KEY,JSON[_0x708c[21]](this[_0x708c[244]][_0x708c[243]]));this[_0x708c[222]](name,null);newArray= [];this[_0x708c[217]](isMusic);if(storageMusic[this[_0x708c[227]]][_0x708c[254]]){if(storageMusic[this[_0x708c[227]]][_0x708c[254]]== name&& this[_0x708c[20]][isMusic]== 0&& isMusic== _0x708c[243]){this[_0x708c[20]][isMusic]= 0;player[_0x708c[181]][_0x708c[180]](_0x708c[205]);this[_0x708c[193]]= false;progress[_0x708c[211]]= 0;animateThumb[_0x708c[194]]();this[_0x708c[244]][_0x708c[243]][_0x708c[242]]> 0?this[_0x708c[217]](isMusic):_0x708c[226];this[_0x708c[244]][_0x708c[243]][_0x708c[242]]> 0?this[_0x708c[230]](isMusic):_0x708c[226]}};if(this[_0x708c[20]][isMusic]> 0&& isMusic== _0x708c[243]){if(storageMusic[this[_0x708c[227]]][_0x708c[254]]!= name&& index> this[_0x708c[20]][isMusic]){this[_0x708c[217]](isMusic)};if(storageMusic[this[_0x708c[227]]][_0x708c[254]]!= name&& index< this[_0x708c[20]][isMusic]){this[_0x708c[20]][isMusic]= this[_0x708c[20]][isMusic]- 1;index> this[_0x708c[227]]?_0x708c[226]:this[_0x708c[222]](isMusic,this[_0x708c[20]][isMusic]);this[_0x708c[227]]--;this[_0x708c[217]](isMusic)};if(storageMusic[this[_0x708c[227]]][_0x708c[254]]== name&& index== storageMusic[_0x708c[242]]- 1){player[_0x708c[181]][_0x708c[180]](_0x708c[205]);this[_0x708c[193]]= false;progress[_0x708c[211]]= 0;animateThumb[_0x708c[194]]();this[_0x708c[227]]=  --this[_0x708c[20]][isMusic];this[_0x708c[222]](isMusic,this[_0x708c[227]]);this[_0x708c[230]](isMusic);this[_0x708c[217]](isMusic)}};if(this[_0x708c[244]][_0x708c[243]][_0x708c[242]]== 0){this[_0x708c[227]]= this[_0x708c[20]][isMusic];this[_0x708c[20]][isMusic]= 0;$(_0x708c[286])[_0x708c[285]]()}}}},nextSong:function(isMusic){isMusic== undefined?isMusic= _0x708c[13]:_0x708c[226];this[_0x708c[222]](isMusic,++this[_0x708c[20]][isMusic])++;this[_0x708c[227]];if(this[_0x708c[20]][isMusic]>= this[_0x708c[244]][isMusic][_0x708c[242]]){this[_0x708c[222]](isMusic,0);this[_0x708c[227]]= 0};this[_0x708c[230]](isMusic)},prevSong:function(isMusic){isMusic== undefined?isMusic= _0x708c[13]:_0x708c[226];this[_0x708c[222]](isMusic,--this[_0x708c[20]][isMusic])--;this[_0x708c[227]];if(this[_0x708c[20]][isMusic]< 0){this[_0x708c[222]](isMusic,this[_0x708c[244]][isMusic][_0x708c[242]]- 1);this[_0x708c[227]]= this[_0x708c[244]][isMusic][_0x708c[242]]- 1};this[_0x708c[230]](isMusic)},randomSong:function(isMusic){isMusic== undefined?isMusic= _0x708c[13]:_0x708c[226];let newIndex;let _that=this;if(indexArray[_0x708c[242]]=== _that[_0x708c[244]][isMusic][_0x708c[242]]){indexArray= []};do{newIndex= Math[_0x708c[210]](Math[_0x708c[287]]()* _that[_0x708c[244]][isMusic][_0x708c[242]])}while(indexArray[_0x708c[288]](newIndex));;indexArray[_0x708c[282]](newIndex);_that[_0x708c[20]][isMusic]= newIndex;_that[_0x708c[230]](isMusic);_that[_0x708c[217]](isMusic);_that[_0x708c[200]]()},loadConfig:function(){this[_0x708c[214]]= this[_0x708c[20]][_0x708c[214]];this[_0x708c[220]]= this[_0x708c[20]][_0x708c[220]]},start:function(){localStorage[_0x708c[18]](LIST_STORAGE_KEY)&& this[_0x708c[244]][_0x708c[243]][_0x708c[242]]=== 0?this[_0x708c[244]][_0x708c[243]]= JSON[_0x708c[19]](localStorage[_0x708c[18]](LIST_STORAGE_KEY)):_0x708c[226];this[_0x708c[203]]();this[_0x708c[249]]();this[_0x708c[217]](isMusic);this[_0x708c[230]](isMusic);this[_0x708c[289]]();random[_0x708c[181]][_0x708c[221]](_0x708c[179],this[_0x708c[214]]|| false);repeat[_0x708c[181]][_0x708c[221]](_0x708c[179],this[_0x708c[220]]|| false)}};app[_0x708c[290]]()
+const $ = document.querySelector.bind(document)
+const $$ = document.querySelectorAll.bind(document)
+const playlist = $('.playlist')
+const cd = $('.cd')
+const heading = $('header h2')
+const thumb = $('.cd-thumb')
+const audio = $('#audio')
+const playBtn = $('.btn-toggle-play')
+const player = $('.player')
+const progress = $('#progress')
+const nextBtn = $('.btn-next')
+const prevBtn = $('.btn-prev')
+let newArray = []
+var isMusic = 'vietnamese'
+const PlAYER_STORAGE_KEY = "MUSIC_APP";
+const LIST_STORAGE_KEY = "MUSIC_LIST";
+const random = $('.btn-random')
+const repeat = $('.btn-repeat')
+let indexArray = []
+const app = {
+    currentIndex: 0,
+    isPlaying: false,
+    isRandom: false,
+    isRepeat: false,
+    config: JSON.parse(localStorage.getItem(PlAYER_STORAGE_KEY)) || {},
+    setConfig: function(key, value){
+        this.config[key] = value
+        localStorage.setItem(PlAYER_STORAGE_KEY,JSON.stringify(this.config))
+    },
+    songs: {
+        vietnamese: [
+            {
+                name: "Bước Qua Nhau",
+                singer: "Vũ",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/BuocQuaNhau-Vu-7120388.mp3?st=I9W59X1Odyi9QRGTehWfHg&e=1638708688",
+                image: "https://avatar-nct.nixcdn.com/song/2021/11/19/6/d/9/1/1637317177185.jpg"
+            },
+            {
+                name: "Ái Nộ",
+                singer: "Masew, Khôi Vũ",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1021/AiNo1-MasewKhoiVu-7078913.mp3?st=ngcoKLRyRorVu8KqUeS1wg&e=1638762705",
+                image: "https://avatar-nct.nixcdn.com/song/2021/08/30/2/1/a/e/1630316309035.jpg"
+            },
+            {
+                name: "Muộn Rồi Mà Sao Còn",
+                singer: "Sơn Tùng M-TP",
+                path: "https://c1-ex-swe.nixcdn.com/Believe_Audio19/MuonRoiMaSaoCon-SonTungMTP-7011803.mp3?st=tD-Ln6qGqkdH659AeuHsjQ&e=1638782546",
+                image: "https://avatar-nct.nixcdn.com/song/2021/04/29/9/1/f/8/1619691182261.jpg"
+            },
+            {
+                name: "Thức Giấc",
+                singer: "Da LAB",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1018/ThucGiac-DaLAB-7048212.mp3?st=1LcQhTisk8WrOQuzK4p86Q&e=1638782708",
+                image: "https://avatar-nct.nixcdn.com/song/2021/07/14/8/c/f/9/1626231010810.jpg"
+            },
+            {
+                name: "Độ Tộc 2",
+                singer: "Masew, Độ Mixi, Phúc Du, Pháo",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/DoToc2-MasewDoMixiPhucDuPhao-7064730.mp3?st=ehahZN3-iX9xYdBFgDgGcg&e=1638782785",
+                image: "https://avatar-nct.nixcdn.com/song/2021/08/10/b/2/e/0/1628579601228.jpg"
+            },
+            {
+                name: "Chúng Ta Sau Này",
+                singer: "T.R.I",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1010/ChungTaSauNay-TRI-6929586.mp3?st=l56Wr1fLE9fMnFehhpo5xg&e=1638782875",
+                image: "https://avatar-nct.nixcdn.com/song/2021/01/27/5/2/2/b/1611738358661.jpg"
+            },
+            {
+                name: "Dịu Dàng Em Đến",
+                singer: "ERIK, NinjaZ",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1021/DiuDangEmDen-ERIKNinjaZ-7078877.mp3?st=QmjyqbnGv3jClPKm4oA1YQ&e=1638782938",
+                image: "https://avatar-nct.nixcdn.com/song/2021/08/30/2/1/a/e/1630307726211.jpg"
+            },
+            {
+                name: "Hương",
+                singer: "Văn Mai Hương, Negav",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1010/Huong-VanMaiHuongNegav-6927340.mp3?st=PvHOWlRnF6TymvggYGding&e=1638783027",
+                image: "https://avatar-nct.nixcdn.com/song/2021/01/22/9/f/2/1/1611280898757.jpg"
+            },
+            {
+                name: "Miên Man",
+                singer: "DUTZUX",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/MienMan-DUTZUX-7120884.mp3?st=yTOFq5aH8FGEvbm-_n_KTA&e=1638783090",
+                image: "https://avatar-nct.nixcdn.com/song/2021/11/19/6/d/9/1/1637320885751.jpg"
+            },
+            {
+                name: "có hẹn với thanh xuân",
+                singer: "MONSTAR",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/cohenvoithanhxuan-MONSTAR-7050201.mp3?st=PjrrnZ2dZ3ffA6R7dRrppQ&e=1638783161",
+                image: "https://avatar-nct.nixcdn.com/song/2021/07/16/f/4/9/8/1626425507034.jpg"
+            }
+        ],
+        english: [
+            {
+                name: "Stay",
+                singer: "The Kid LAROI, Justin Bieber",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1018/Stay-TheKidLAROIJustinBieber-7045258.mp3?st=tDMLXwH5rcrkO9nF-Y0mWA&e=1638769802",
+                image: "https://avatar-nct.nixcdn.com/song/2021/07/09/5/5/8/2/1625815274622.jpg"
+            },
+            {
+                name: "All Too Well",
+                singer: "Taylor Swift",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/AllTooWell10MinuteVersionTaylorsVersion-TaylorSwift-7120438.mp3?st=moySlM-gRk8kpSEQdA729g&e=1638673508",
+                image: "https://avatar-nct.nixcdn.com/song/2021/11/23/d/a/a/e/1637643196932_300.jpg"
+            },
+            {
+                name: "Equal In The Darkness",
+                singer: "Steve Aoki, Thái Y Lâm (Jolin Tsai), MAX",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/EqualInTheDarkness-SteveAokiThaiYLamJolinTsaiMAX-7116228.mp3?st=1TO5aq2W9pnBPnKJ-0BwLA&e=1638673651",
+                image: "https://avatar-nct.nixcdn.com/song/2021/10/27/0/c/c/3/1635299658476_300.jpg"
+            },
+            {
+                name: "Always Love You",
+                singer: "Elton John, Young Thug, Nicki Minaj",
+                path: "https://c1-ex-swe.nixcdn.com/Unv_Audio203/AlwaysLoveYou-EltonJohnYoungThugNickiMinaj-7114807.mp3?st=FjWol1PzZ4cmEPzH-8rKdQ&e=1638673737",
+                image: "https://avatar-nct.nixcdn.com/song/2021/10/21/c/d/d/a/1634797395961.jpg"
+            },
+            {
+                name: "Wildest Dreams (Taylor's Version)",
+                singer: "Taylor Swift",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1022/WildestDreamsTaylorsVersion-TaylorSwift-7090980.mp3?st=MqTkbQYsSI-Wri68OiCggA&e=1638673817",
+                image: "https://avatar-nct.nixcdn.com/song/2021/09/17/5/a/b/4/1631889063619_300.jpg"
+            },
+            {
+                name: "Lonely",
+                singer: "Justin Bieber, Benny Blanco",
+                path: "https://c1-ex-swe.nixcdn.com/Unv_Audio197/Lonely-JustinBieberbennyblanco-6993497.mp3?st=HfdveKXgMQiQEl5_nrafHg&e=1638784621",
+                image: "https://avatar-nct.nixcdn.com/song/2020/10/16/7/4/6/2/1602823109092.jpg"
+            },
+            {
+                name: "Intentions",
+                singer: "Justin Bieber, Quavo",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui995/Intentions-JustinBieberQuavo-6217997.mp3?st=hcdpQpM3beevQ-_6KJ82dA&e=1638784782",
+                image: "https://avatar-nct.nixcdn.com/song/2020/02/07/2/0/7/2/1581052824234.jpg"
+            },
+            {
+                name: "Hold On",
+                singer: "Justin Bieber, Dominic Fike",
+                path: "https://c1-ex-swe.nixcdn.com/Unv_Audio201/HoldOn-JustinBieber-7103059.mp3?st=Jb7CePADDk5Lz9NMD9pSAQ&e=1638784678",
+                image: "https://avatar-nct.nixcdn.com/song/2021/03/05/2/1/7/c/1614931554567.jpg"
+            },
+            {
+                name: "Monster",
+                singer: "Shawn Mendes, Justin Bieber",
+                path: "https://c1-ex-swe.nixcdn.com/Unv_Audio188/Monster-ShawnMendesJustinBieber-6838261.mp3?st=w65iy6S0b1mtDlUnsZOceA&e=1638784732",
+                image: "https://avatar-nct.nixcdn.com/song/2020/11/23/0/2/3/c/1606100084558.jpg"
+            },
+            {
+                name: "All Around Me",
+                singer: "Justin Bieber",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui995/AllAroundMe-JustinBieber-6223828.mp3?st=vvGCbil4vC_5l_05XNgOtw&e=1638873647",
+                image: "https://avatar-nct.nixcdn.com/song/2020/02/14/a/9/d/b/1581658518670.jpg"
+            }
+        ],
+        korea: [
+            {
+                name: "Haru Haru",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/HaruHaru-BIGBANG-6291516.mp3?st=Gspt0qSx7rVZoYeM-x2jXA&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2020/06/09/2/d/0/7/1591688793624.jpg"
+            },
+            {
+                name: "Loser",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/Loser-BIGBANG-6291940.mp3?st=Lhof5KoX62zevt2ZEXBP-A&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734574215.jpg"
+            },
+            {
+                name: "Let'S Not Fall In Love",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/LetSNotFallInLove-BIGBANG-6292282.mp3?st=fcFmzvoy9t6mhv487BnahA&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734613690.jpg"
+            },
+            {
+                name: "Blue",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/Blue-BIGBANG-6292792.mp3?st=g0jDh_aS0bi75C3ZD9FhvA&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/08/08/1/e/0/1/1565247252132.jpg"
+            },
+            {
+                name: "Bang Bang Bang",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/BangBangBang-BIGBANG-6293092.mp3?st=6I573fkPVGoqOxI43cIGVw&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734586323.jpg"
+            },
+            {
+                name: "If You",
+                singer: "BIGBANG",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/IfYou-BIGBANG-6292294.mp3?st=xp-NrUXRQJTWzQabivltww&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/07/10/f/2/6/d/1562734599196.jpg"
+            },
+            {
+                name: "Horang Suwolga",
+                singer: "Sangnoksu, Narae",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1005/HorangSuwolga-SangnoksuNarae-6770371.mp3?st=Ks8apkixAmM2J_Yr8k0-eA&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2020/12/14/5/c/b/a/1607915686599.jpg"
+            },
+            {
+                name: "Celebrity",
+                singer: "IU",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1011/Celebrity-IU-6938138.mp3?st=iM5VWwaQtj1ImVGkz3bq8Q&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2021/03/01/7/7/d/0/1614570355625.jpg"
+            },
+            {
+                name: "Blueming",
+                singer: "IU",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui992/Blueming-IU-6138404.mp3?st=HGiSqSggzq_yx7A8dWC5aQ&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2019/11/18/b/0/e/0/1574073260102.jpg"
+            },
+            {
+                name: "Love Scenario",
+                singer: "iKON",
+                path: "https://c1-ex-swe.nixcdn.com/YG_Audio1/LoveScenario-iKON-6292220.mp3?st=GquH-Wmqa8cjZfNqRgIM7w&e=1638783344",
+                image: "https://avatar-nct.nixcdn.com/song/2018/01/25/5/2/d/e/1516873006451.jpg"
+            },
+            
+        ],
+        china: [
+            {
+                name: "Mạc Ly / 莫离 (Gia Nam Truyện OST)",
+                singer: "Cúc Tịnh Y (Ju Jing Yi)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1024/MacLyGiaNamTruyenOST-CucTinhYJuJingYi-7114103.mp3?st=1kYhMVrtp1prZDQLxMbXzQ&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2021/10/26/8/1/f/e/1635241730249.jpg"
+            },
+            {
+                name: "Tay Trái Chỉ Trăng / 左手指月",
+                singer: "Tát Đỉnh Đỉnh (Sa Ding Ding)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui962/TayTraiChiTrang-TatDinhDinhSaDingDing-5431513.mp3?st=R7nm-Q6FxpUL0UxCDMq2ig&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786602391.jpg"
+            },
+            {
+                name: "Sứ Thanh Hoa / 青花瓷",
+                singer: "Châu Kiệt Luân (Jay Chou)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui964/SuThanhHoa-ChauKietLuanJayChou-108110.mp3?st=ieBMFvjQWp7apqOrblPsiQ&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2019/08/07/3/6/d/a/1565165369019.jpg"
+            },
+            {
+                name: "Phi Điểu Và Ve Sầu / 飞鸟和蝉",
+                singer: "Nhậm Nhiên",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1000/ChimBayCungVe-NhamNhien-6321767.mp3?st=OPJVhLrpz3u1cVbknHRjzw&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2020/07/03/8/9/c/9/1593752079734.jpg"
+            },
+            {
+                name: "Mang Chủng / 芒种",
+                singer: "Âm Khuyết Thi Thính, Triệu Phương Tịnh (Zhao Fangjing)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui983/MangChung-TrieuPhuongTinhAmKhuyetThiThinh-5989054.mp3?st=9WINGtCn0ciu3GtGJODdrQ&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2019/08/05/1/9/9/6/1565016156395.jpg"
+            },
+            {
+                name: "Đồng Thoại",
+                singer: "Quang Lương (Michael Wong)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui946/DongThoai-MichaelWongQuangLuong-161624.mp3?st=lVaJblR1dnRj2csOFwvkRA&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2019/08/07/3/6/d/a/1565163727207.jpg"
+            },
+            {
+                name: "Vô Ngu / 无虞 (Châu Sinh Như Cố Ost)",
+                singer: "Lý Tử Đình (Mimi Lee), Tỉnh Lung (Jing Long)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui1020/VoNguChauSinhNhuCoOst-LyTuDinhMimiLeeTinhLungJingLong-7075326.mp3?st=H_9Pz6muAHchS9Pn6n3-qA&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2021/08/26/6/5/8/f/1629966116215.jpg"
+            },
+            {
+                name: "Ái Thương",
+                singer: "Đổng Trinh (Dong Zhen)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui155/AiThuong-DongTrinh_35bzb.mp3?st=xwSnK7z8klRBvJR4sKuo3Q&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/singer/avatar/2017/03/22/7/e/b/2/1490170353513.jpg"
+            },
+            {
+                name: "Bất Nhiễm / 不染 (Hương Mật Tựa Khói Sương OST)",
+                singer: "Mao Bất Dịch (Mao Bu Yi)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui960/BatNhiem-MaoBatDichMaoBuyi-5393965.mp3?st=-66MXvOtm335TBJ4NHba5Q&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786553828.jpg"
+            },
+            {
+                name: "Thiếu Niên / 少年",
+                singer: "Mộng Nhiên (Meng Ran)",
+                path: "https://c1-ex-swe.nixcdn.com/NhacCuaTui996/ThieuNien-MongNhienMengRan-6238337.mp3?st=izeVhk_T_SP2bFJHAjencQ&e=1638784935",
+                image: "https://avatar-nct.nixcdn.com/song/2020/03/18/3/d/4/9/1584522109605.jpg"
+            },
+        ],
+        love: [
+        ],
+    },
+    // defineProperties: function(isMusic) {
+    //     let currentMusic
+    //     if(isMusic){
+    //         currentMusic = isMusic
+    //         console.log(currentMusic);
+    //     } else {
+    //         currentMusic = 'vietnamese'
+    //     }
+    //     Object.defineProperty(this, 'currentSong', {
+    //         get: function() {
+    //             return this.songs[currentMusic][this.currentIndex]
+    //         }
+    //     })
+    // },
+    handleEvents: function(isMusic) {
+        // Xử lý scroll 
+        const cdWidth = cd.offsetWidth;
+        const _this = this
+        document.onscroll = function() {
+            if($('.download.active') || false){
+                $('.download.active').classList.remove('active')
+            }
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const newCdWidth = cdWidth - scrollTop;
+                cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0;
+                cd.style.opacity = newCdWidth / cdWidth;
+                if(scrollTop > 50){
+                    $('.locationmusic').classList.add('none')
+                } else {
+                    $('.locationmusic').classList.remove('none')
+                }
+                
+            }
+        // Play songs
+        playBtn.onclick = function() {
+            if(_this.isPlaying){
+                audio.pause()
+            } else {
+                audio.play()
+                _this.config[isMusic] > 2 ? $(".song.active").scrollIntoView({
+                    behavior: "smooth",
+                block: "center",
+                }) : _this.scrollToActiveSong(isMusic)
+            }
+        }
+
+        // Animation thumb
+        const animateThumb = cd.animate([
+            {
+                transform: "rotate(360deg)"
+            }
+        ], {
+            duration: 10000,
+            iterations: Infinity
+        }) 
+        animateThumb.pause()
+        this.hendleAbumMusic(animateThumb)
+        audio.onplay = function() {
+            _this.isPlaying = true
+            player.classList.add("playing")
+            animateThumb.play()            
+        }
+        audio.onpause = function() {
+            _this.isPlaying = false
+            player.classList.remove("playing")
+            animateThumb.pause()
+        }
+        // Tiến độ bài hát
+        audio.ontimeupdate = function() {
+            if (audio.duration){
+                const progressPercent = Math.floor((audio.currentTime / audio.duration) * 100);
+                progress.value = progressPercent
+            }
+        }
+        // Tua bài hát
+        progress.oninput = function (e){
+            const seekTime = (audio.duration / 100) * e.target.value;
+            audio.currentTime = seekTime
+        }
+
+        // Next một bài hát
+        nextBtn.onclick = function () {
+            if(_this.isRandom){
+                _this.randomSong(isMusic)
+            }
+                _this.nextSong(isMusic)
+                _this.renderSongs(isMusic)
+                _this.scrollToActiveSong()
+                audio.play()
+        }
+        // Prev một bài hát
+        prevBtn.onclick = function () {
+            if(_this.isRandom){
+                _this.randomSong(isMusic)
+            }
+                _this.prevSong(isMusic)
+                _this.renderSongs(isMusic)
+                _this.scrollToActiveSong()
+                audio.play()
+        }
+        // Khi kết thúc một bài hát
+        audio.onended = function () {
+            if(_this.isRandom){
+                _this.randomSong(isMusic)
+                audio.play()
+            } 
+            else if(_this.isRepeat){
+                audio.play()
+            }
+            else {
+                nextBtn.onclick()
+            }
+        }
+        // random bài hát
+        random.onclick = function () {
+            if(_this.isRepeat){
+                _this.isRepeat = !_this.isRepeat
+                repeat.classList.toggle('active', _this.isRepeat)
+                _this.setConfig('isRepeat',_this.isRepeat)
+
+            }
+                _this.isRandom = !_this.isRandom
+                _this.setConfig('isRandom',_this.isRandom)
+                random.classList.toggle('active', _this.isRandom)
+        }
+        repeat.onclick = function () {
+            if(_this.isRandom){
+                _this.isRandom = !_this.isRandom
+                random.classList.toggle('active', _this.isRandom)
+                _this.setConfig('isRandom',_this.isRandom)
+
+            }
+            _this.isRepeat = !_this.isRepeat
+            _this.setConfig('isRepeat',_this.isRepeat)
+            repeat.classList.toggle('active', _this.isRepeat)
+        }
+        // Chọn bài hát 
+        playlist.onclick = function (e) {
+            const songNode = e.target.closest(".song:not(.active)");
+            if(songNode && !e.target.closest('.option')){
+                isMusic == undefined ? isMusic = 'vietnamese' : ''
+                _this.currentIndex = Number(songNode.dataset.index)
+                _this.setConfig(isMusic,_this.currentIndex)
+                _this.loadCurrentSong(isMusic)
+                _this.renderSongs(isMusic)
+                audio.play()
+            }
+            if(e.target.closest('.option')){
+                e.target.closest('.like') ? _this.hendleLikeSongs(e.target.closest('.like'),isMusic,animateThumb) : ''
+                const download = $$('.download')
+                const indexDownload = Number(e.target.closest('.option').dataset.download)
+                if(download[indexDownload]){
+                    download[indexDownload].classList.toggle('active')
+                }
+                if($('.download.active')){
+                    download.forEach(function(value,index) {
+                        if(Number(index) !== indexDownload){
+                            value.classList.remove('active')
+                        }
+                    })
+                }
+            }
+        }
+        $('body').onclick = function(e){
+            if(!e.target.closest('.playlist')){
+                if($('.download.active') || false){
+                    $('.download.active').classList.remove('active')
+                }
+            }
+        }
+
+        //  
+    },
+    hendleAbumMusic: function(animateThumb){      
+        const that = this
+        $$('.locationmusic div').forEach(function(value){
+            value.onclick = function(e){
+                const valueIsMusic = e.target.getAttribute('value')
+                that.checkCurrentIndex(isMusic)
+                if(!e.target.closest('.locationmusic > .select')){
+                    if(e.target.innerText == 'LOVE' && that.songs.love.length === 0){
+                        alert('Bạn chưa có bài hát yêu thích!!')
+                    } else {
+                        switch(valueIsMusic) {
+                            case 'vietnamese':
+                                isMusic = 'vietnamese'
+                                break;
+                            case 'english':
+                                isMusic = 'english'
+                                break;
+                            case 'korea':
+                                isMusic = 'korea'
+                                break;
+                            case 'china':
+                                isMusic = 'china'
+                                break;
+                            case 'love':
+                                isMusic = 'love'
+                                break;
+                          }
+                        that.config[isMusic] == undefined ? that.setConfig(isMusic, 0) : '' 
+                        that.config[isMusic] ? that.currentIndex = that.config[isMusic] : that.currentIndex = 0
+                        indexArray = []
+                        progress.value = 0
+                        animateThumb.pause()
+                        that.isPlaying = false;
+                        player.classList.remove('playing')
+                        cd.style.width = 200 + 'px'
+                        cd.style.opacity = null;
+                        that.renderSongs(isMusic)
+                        that.handleEvents(isMusic)
+                        that.loadCurrentSong(isMusic)
+                        that.nextSong(isMusic)
+                        that.prevSong(isMusic)
+                        $('.locationmusic > .select').classList.remove('select')
+                        e.target.classList.add('select') 
+                        // $('.song.active') ? that.scrollToActiveSong() : ''
+                        that.config[isMusic] > 2 ? $(".song.active").scrollIntoView({
+                            behavior: "smooth",
+                        block: "center",
+                        }) : that.scrollToActiveSong()
+                    }                        
+                }                    
+            }
+        })    
+    },
+    checkCurrentIndex: function (isMusic){
+        if(this.config[isMusic] == null) {
+            this.config[isMusic] = 0
+        }
+    },
+    scrollToActiveSong: function () {
+        setTimeout(() => {
+            $(".song.active").scrollIntoView({
+                behavior: "smooth",
+                block: "end",
+              }) 
+        }, 300);
+    },
+    loadCurrentSong: function(isMusic) {
+        heading.textContent = 
+        this.config[isMusic] ? this.songs[isMusic][this.config[isMusic]].name 
+        : this.songs[isMusic][this.currentIndex].name
+        thumb.style.backgroundImage = 
+       this.config[isMusic] ? `url(${this.songs[isMusic][this.config[isMusic]].image})` 
+        : `url(${this.songs[isMusic][this.currentIndex].image})`
+        audio.src = 
+        this.config[isMusic] ? this.songs[isMusic][this.config[isMusic]].path 
+        : this.songs[isMusic][this.currentIndex].path
+    },
+    renderSongs: function(music) {
+        this.config['vietnamese'] == undefined ? this.setConfig('vietnamese', 0) : ''
+        music == undefined ? music = 'vietnamese' : ''
+        const htmls = this.songs[music].map((song,index) => 
+            `
+                <div class="song ${index === this.config[music] ? "active" : ''}" data-index="${index}">
+                    <div class="thumb" style="background-image: url('${song.image}')">
+                    </div>
+                    <div class="body">
+                        <h3 class="title">${song.name}</h3>
+                        <p class="author">${song.singer}</p>
+                    </div>
+                    <div class="option" data-download="${index}">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <div class="download" data-download="${index}">
+                        <a href="${song.path}">Tải</a>
+                        <a class="like ${this.config[song.name] ? "active" : ''}" data-index="${index}" data-name="${song.name}" data-path="${song.path}" data-image="${song.image}"
+                         data-singer="${song.singer}">${this.config[song.name] ? 'Bỏ thích' : 'Thích'}</a>
+                        </div>
+                    </div>
+                </div>
+                `
+        );
+        playlist.innerHTML = htmls.join('')
+    },
+    hendleLikeSongs: function(likeSongs,isMusic,animateThumb){
+        const name = likeSongs.dataset.name
+        const singer = likeSongs.dataset.singer
+        const path = likeSongs.dataset.path
+        const image = likeSongs.dataset.image
+        const index = likeSongs.dataset.index
+        const listArray = {
+            name,
+            singer,
+            path,
+            image
+        }
+        if(likeSongs.innerText === 'Thích') {
+            if(this.songs.love.length >= 0 && isMusic != 'english' && isMusic != 'korea' && isMusic != 'china'){
+                isMusic = 'vietnamese';
+            }
+            this.songs.love.push(listArray)
+            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(this.songs.love))
+            this.setConfig(name,name)
+            this.renderSongs(isMusic)
+            alert('Đã thêm vào danh sách yêu thích')
+        }
+        else if(likeSongs.innerText === 'Bỏ thích'){
+            const deleteArray = this.songs.love.filter(function(value){
+                return value.name != name
+            })
+            const storageMusic = JSON.parse(localStorage.getItem(LIST_STORAGE_KEY))
+            newArray = deleteArray 
+            this.songs.love = newArray 
+            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(this.songs.love))
+            this.setConfig(name,null)
+            newArray = []
+            this.renderSongs(isMusic)
+
+            if(storageMusic[this.currentIndex].name){
+                if(storageMusic[this.currentIndex].name == name && this.config[isMusic] == 0 && isMusic == 'love'){
+                    this.config[isMusic] = 0
+                    player.classList.remove('playing')
+                    this.isPlaying = false
+                    progress.value = 0
+                    animateThumb.pause()
+                    this.songs.love.length > 0 ? this.renderSongs(isMusic) : ''
+                    this.songs.love.length > 0 ? this.loadCurrentSong(isMusic) : ''
+                }                
+            }
+            if(this.config[isMusic] > 0 && isMusic == 'love'){
+                if(storageMusic[this.currentIndex].name != name && index > this.config[isMusic]){
+                    this.renderSongs(isMusic)
+                }
+                if(storageMusic[this.currentIndex].name != name && index < this.config[isMusic]){
+                    this.config[isMusic] = this.config[isMusic] - 1
+                    index > this.currentIndex ? '' : this.setConfig(isMusic, this.config[isMusic])
+                    this.currentIndex--
+                    this.renderSongs(isMusic)
+                }
+                if(storageMusic[this.currentIndex].name == name && index == storageMusic.length - 1){
+                    player.classList.remove('playing')
+                    this.isPlaying = false
+                    progress.value = 0
+                    animateThumb.pause()
+                    this.currentIndex = --this.config[isMusic]
+                    this.setConfig(isMusic, this.currentIndex)
+                    this.loadCurrentSong(isMusic)
+                    this.renderSongs(isMusic)
+                }
+            }
+            if(this.songs.love.length == 0){
+                this.currentIndex = this.config[isMusic]
+                this.config[isMusic] = 0
+                $('.vietnamese').click()
+            }
+        }
+    },nextSong : function(isMusic) {isMusic == undefined ? isMusic = 'vietnamese' : '' this.setConfig(isMusic, ++this.config[isMusic])++this.currentIndex if(this.config[isMusic] >= this.songs[isMusic].length){ this.setConfig(isMusic, 0) this.currentIndex = 0 }this.loadCurrentSong(isMusic)},prevSong: function(isMusic) { isMusic == undefined ? isMusic = 'vietnamese' : '' this.setConfig(isMusic, --this.config[isMusic]) --this.currentIndex if(this.config[isMusic] < 0){ this.setConfig(isMusic, this.songs[isMusic].length - 1) this.currentIndex = this.songs[isMusic].length - 1}this.loadCurrentSong(isMusic)},randomSong: function(isMusic) {isMusic == undefined ? isMusic = 'vietnamese' : '' let newIndex;let _that = this if(indexArray.length === _that.songs[isMusic].length){indexArray = []}do {newIndex = Math.floor(Math.random() * _that.songs[isMusic].length) } while(indexArray.includes(newIndex))indexArray.push(newIndex) _that.config[isMusic]  = newIndex _that.loadCurrentSong(isMusic) _that.renderSongs(isMusic) _that.scrollToActiveSong()},loadConfig: function() {this.isRandom = this.config.isRandomthis.isRepeat = this.config.isRepeat },start: function() {localStorage.getItem(LIST_STORAGE_KEY) && this.songs.love.length === 0 ? this.songs.love = JSON.parse(localStorage.getItem(LIST_STORAGE_KEY))  : ''this.hendleAbumMusic()this.handleEvents()this.renderSongs(isMusic)this.loadCurrentSong(isMusic)this.loadConfig()random.classList.toggle('active', this.isRandom || false)repeat.classList.toggle('active', this.isRepeat || false)}}app.start()
+
