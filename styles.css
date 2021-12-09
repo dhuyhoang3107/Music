@@ -60,11 +60,6 @@ html {
     display:flex;
     justify-content: space-around;
 }
-
-.locationmusic.none {
-    display: none;
-}
-
 .vietnamese,
 .kr,
 .us,
@@ -300,9 +295,7 @@ header h2 {
     width: 100%;
     max-width: 480px;
     top: 0;
-    left: 0;
     bottom: 0;
-    right: 0;
     display: none;
 }
 .box.active {
