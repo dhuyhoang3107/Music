@@ -280,7 +280,22 @@ const app = {
         love: [
         ],
     },
+    // defineProperties: function(isMusic) {
+    //     let currentMusic
+    //     if(isMusic){
+    //         currentMusic = isMusic
+    //         console.log(currentMusic);
+    //     } else {
+    //         currentMusic = 'vietnamese'
+    //     }
+    //     Object.defineProperty(this, 'currentSong', {
+    //         get: function() {
+    //             return this.songs[currentMusic][this.currentIndex]
+    //         }
+    //     })
+    // },
     handleEvents: function(isMusic) {
+        // Xử lý scroll 
         const cdWidth = cd.offsetWidth;
         const _this = this
         document.onscroll = function() {
@@ -298,6 +313,7 @@ const app = {
                 }
                 
             }
+        // Play songs
         playBtn.onclick = function() {
             if(_this.isPlaying){
                 audio.pause()
@@ -309,6 +325,8 @@ const app = {
                 }) : _this.scrollToActiveSong(isMusic)
             }
         }
+
+        // Animation thumb
         const animateThumb = cd.animate([
             {
                 transform: "rotate(360deg)"
@@ -329,17 +347,20 @@ const app = {
             player.classList.remove("playing")
             animateThumb.pause()
         }
+        // Tiến độ bài hát
         audio.ontimeupdate = function() {
             if (audio.duration){
                 const progressPercent = Math.floor((audio.currentTime / audio.duration) * 100);
                 progress.value = progressPercent
             }
         }
+        // Tua bài hát
         progress.oninput = function (e){
             const seekTime = (audio.duration / 100) * e.target.value;
             audio.currentTime = seekTime
         }
 
+        // Next một bài hát
         nextBtn.onclick = function () {
             if(_this.isRandom){
                 _this.randomSong(isMusic)
@@ -349,6 +370,7 @@ const app = {
                 _this.scrollToActiveSong()
                 audio.play()
         }
+        // Prev một bài hát
         prevBtn.onclick = function () {
             if(_this.isRandom){
                 _this.randomSong(isMusic)
@@ -358,6 +380,7 @@ const app = {
                 _this.scrollToActiveSong()
                 audio.play()
         }
+        // Khi kết thúc một bài hát
         audio.onended = function () {
             if(_this.isRandom){
                 _this.randomSong(isMusic)
@@ -370,6 +393,7 @@ const app = {
                 nextBtn.onclick()
             }
         }
+        // random bài hát
         random.onclick = function () {
             if(_this.isRepeat){
                 _this.isRepeat = !_this.isRepeat
@@ -392,6 +416,7 @@ const app = {
             _this.setConfig('isRepeat',_this.isRepeat)
             repeat.classList.toggle('active', _this.isRepeat)
         }
+        // Chọn bài hát 
         playlist.onclick = function (e) {
             const songNode = e.target.closest(".song:not(.active)");
             if(songNode && !e.target.closest('.option')){
@@ -403,28 +428,36 @@ const app = {
                 audio.play()
             }
             if(e.target.closest('.option')){
-                e.target.closest('.like') ? _this.hendleLikeSongs(e.target.closest('.like'),isMusic,animateThumb) : ''
-                const download = $$('.download')
-                const indexDownload = Number(e.target.closest('.option').dataset.download)
-                if(download[indexDownload]){
-                    download[indexDownload].classList.toggle('active')
-                }
-                if($('.download.active')){
-                    download.forEach(function(value,index) {
-                        if(Number(index) !== indexDownload){
-                            value.classList.remove('active')
-                        }
+                var name = e.target.closest('.option').dataset.name
+                var singer = e.target.closest('.option').dataset.singer
+                var index = e.target.closest('.option').dataset.index
+                var image = e.target.closest('.option').dataset.image
+                var path = e.target.closest('.option').dataset.path
+                    const getLocalSongs = _this.songs.love
+                    if(getLocalSongs[index]){
+                        $('.like').innerText = 'Xóa bài hát khỏi danh sách yêu thích'
+                        $('.like').classList.add('active')
+                        $('.like').setAttribute('value','unlike')
+                    }else {
+                        $('.like').innerText = 'Thêm bài hát vào danh sách yêu thích'
+                        $('.like').setAttribute('value','like')
+                        $('.like').classList.remove('active')
+                    }
+                    $('.blockoptions').classList.add('active')
+                    $('.box').classList.add('active')
+                    $('.download a').setAttribute('href', path)
+                    var opt = {'data-name':name, 'data-singer': singer, 'data-index':index,'data-image': image,'data-path': path};
+                    Object.keys(opt).forEach(function(key){
+                        $('.like').setAttribute(key, opt[key])
                     })
-                }
+                    _this.hendleLikeSongs(opt,isMusic,animateThumb)
             }
         }
-        $('body').onclick = function(e){
-            if(!e.target.closest('.playlist')){
-                if($('.download.active') || false){
-                    $('.download.active').classList.remove('active')
-                }
-            }
+        $('.box').onclick = function(e){
+            e.target.classList.remove('active')
+            $('.blockoptions').classList.remove('active')
         }
+        //  
     },
     hendleAbumMusic: function(animateThumb){      
         const that = this
@@ -515,12 +548,8 @@ const app = {
                         <h3 class="title">${song.name}</h3>
                         <p class="author">${song.singer}</p>
                     </div>
-                    <div class="option" data-download="${index}">
+                    <div class="option" data-index="${index}" data-path="${song.path}" data-name="${song.name}" data-singer="${song.singer}" data-image="${song.image}">
                         <i class="fas fa-ellipsis-h"></i>
-                        <div class="download" data-download="${index}">
-                        <a href="${song.path}">Tải</a>
-                        <a class="like ${this.config[song.name] ? "active" : ''}" data-index="${index}" data-name="${song.name}" data-path="${song.path}" data-image="${song.image}"
-                         data-singer="${song.singer}">${this.config[song.name] ? 'Bỏ thích' : 'Thích'}</a>
                         </div>
                     </div>
                 </div>
@@ -528,78 +557,87 @@ const app = {
         );
         playlist.innerHTML = htmls.join('')
     },
-    hendleLikeSongs: function(likeSongs,isMusic,animateThumb){
-        const name = likeSongs.dataset.name
-        const singer = likeSongs.dataset.singer
-        const path = likeSongs.dataset.path
-        const image = likeSongs.dataset.image
-        const index = likeSongs.dataset.index
+    hendleLikeSongs: function(dataSongs,isMusic,animateThumb){
+        const name = dataSongs['data-name']
+        const singer = dataSongs['data-singer']
+        const path = dataSongs['data-path']
+        const image = dataSongs['data-image']
+        const index = dataSongs['data-index']
         const listArray = {
             name,
             singer,
             path,
             image
         }
-        if(likeSongs.innerText === 'Thích') {
-            if(this.songs.love.length >= 0 && isMusic != 'english' && isMusic != 'korea' && isMusic != 'china'){
+        const _this = this
+        $('.like').onclick = function(e){
+        if(e.target.getAttribute('value') == 'like') {
+            if(_this.songs.love.length >= 0 && isMusic != 'english' && isMusic != 'korea' && isMusic != 'china'){
                 isMusic = 'vietnamese';
             }
-            this.songs.love.push(listArray)
-            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(this.songs.love))
-            this.setConfig(name,name)
-            this.renderSongs(isMusic)
+            _this.songs.love.push(listArray)
+            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(_this.songs.love))
+            _this.setConfig(name,name)
+            _this.renderSongs(isMusic)
+            $('.like').classList.add('active')
+            $('.like').innerText = 'Xóa bài hát khỏi danh sách yêu thích'
+            $('.box').click()
             alert('Đã thêm vào danh sách yêu thích')
         }
-        else if(likeSongs.innerText === 'Bỏ thích'){
-            const deleteArray = this.songs.love.filter(function(value){
+        else if(e.target.getAttribute('value') == 'unlike'){
+            const deleteArray = _this.songs.love.filter(function(value){
                 return value.name != name
             })
             const storageMusic = JSON.parse(localStorage.getItem(LIST_STORAGE_KEY))
             newArray = deleteArray 
-            this.songs.love = newArray 
-            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(this.songs.love))
-            this.setConfig(name,null)
+            _this.songs.love = newArray 
+            localStorage.setItem(LIST_STORAGE_KEY,JSON.stringify(_this.songs.love))
+            _this.setConfig(name,null)
             newArray = []
-            this.renderSongs(isMusic)
+            _this.renderSongs(isMusic)
 
-            if(storageMusic[this.currentIndex].name){
-                if(storageMusic[this.currentIndex].name == name && this.config[isMusic] == 0 && isMusic == 'love'){
-                    this.config[isMusic] = 0
+            if(storageMusic[_this.currentIndex].name){
+                if(storageMusic[_this.currentIndex].name == name && _this.config[isMusic] == 0 && isMusic == 'love'){
+                    _this.config[isMusic] = 0
                     player.classList.remove('playing')
-                    this.isPlaying = false
+                    _this.isPlaying = false
                     progress.value = 0
                     animateThumb.pause()
-                    this.songs.love.length > 0 ? this.renderSongs(isMusic) : ''
-                    this.songs.love.length > 0 ? this.loadCurrentSong(isMusic) : ''
+                    _this.songs.love.length > 0 ? _this.renderSongs(isMusic) : ''
+                    _this.songs.love.length > 0 ? _this.loadCurrentSong(isMusic) : ''
                 }                
             }
-            if(this.config[isMusic] > 0 && isMusic == 'love'){
-                if(storageMusic[this.currentIndex].name != name && index > this.config[isMusic]){
-                    this.renderSongs(isMusic)
+            if(_this.config[isMusic] > 0 && isMusic == 'love'){
+                if(storageMusic[_this.currentIndex].name != name && index > _this.config[isMusic]){
+                    _this.renderSongs(isMusic)
                 }
-                if(storageMusic[this.currentIndex].name != name && index < this.config[isMusic]){
-                    this.config[isMusic] = this.config[isMusic] - 1
-                    index > this.currentIndex ? '' : this.setConfig(isMusic, this.config[isMusic])
-                    this.currentIndex--
-                    this.renderSongs(isMusic)
+                if(storageMusic[_this.currentIndex].name != name && index < _this.config[isMusic]){
+                    _this.config[isMusic] = _this.config[isMusic] - 1
+                    index > _this.currentIndex ? '' : _this.setConfig(isMusic, _this.config[isMusic])
+                    _this.currentIndex--
+                    _this.renderSongs(isMusic)
                 }
-                if(storageMusic[this.currentIndex].name == name && index == storageMusic.length - 1){
+                if(storageMusic[_this.currentIndex].name == name && index == storageMusic.length - 1){
                     player.classList.remove('playing')
-                    this.isPlaying = false
+                    _this.isPlaying = false
                     progress.value = 0
                     animateThumb.pause()
-                    this.currentIndex = --this.config[isMusic]
-                    this.setConfig(isMusic, this.currentIndex)
-                    this.loadCurrentSong(isMusic)
-                    this.renderSongs(isMusic)
+                    _this.currentIndex = --_this.config[isMusic]
+                    _this.setConfig(isMusic, _this.currentIndex)
+                    _this.loadCurrentSong(isMusic)
+                    _this.renderSongs(isMusic)
                 }
             }
-            if(this.songs.love.length == 0){
-                this.currentIndex = this.config[isMusic]
-                this.config[isMusic] = 0
+            if(_this.songs.love.length == 0){
+                _this.currentIndex = _this.config[isMusic]
+                _this.config[isMusic] = 0
                 $('.vietnamese').click()
             }
+            $('.like').classList.remove('active')
+            $('.like').innerText = 'Thêm bài hát vào danh sách yêu thích'
+            $('.box').click()
         }
+    }
     },
     nextSong : function(isMusic) {
         isMusic == undefined ? isMusic = 'vietnamese' : ''
@@ -610,6 +648,7 @@ const app = {
             this.currentIndex = 0
         }
         this.loadCurrentSong(isMusic)
+        // this.renderSongs(isMusic)
     },
     prevSong: function(isMusic) {
         isMusic == undefined ? isMusic = 'vietnamese' : ''
@@ -620,6 +659,7 @@ const app = {
             this.currentIndex = this.songs[isMusic].length - 1
         }
         this.loadCurrentSong(isMusic)
+        // this.renderSongs(isMusic)
     },
     randomSong: function(isMusic) {
         isMusic == undefined ? isMusic = 'vietnamese' : ''
@@ -642,17 +682,30 @@ const app = {
         this.isRandom = this.config.isRandom
         this.isRepeat = this.config.isRepeat
     },
+
     start: function() {
         localStorage.getItem(LIST_STORAGE_KEY) && this.songs.love.length === 0 ? this.songs.love = JSON.parse(localStorage.getItem(LIST_STORAGE_KEY))  : ''
+        // ham xu ly music location
         this.hendleAbumMusic()
+
+        // Hàm xử lý events DOM
         this.handleEvents()
+        // Hàm lấy ra 1 song
+        // this.defineProperties();
+
+        
+
+        // Hàm render ra List Songs
         this.renderSongs(isMusic)
+        // Hàm load song
         this.loadCurrentSong(isMusic)
+        // load dữ liệu config trên localStorage
         this.loadConfig()
         random.classList.toggle('active', this.isRandom || false)
         repeat.classList.toggle('active', this.isRepeat || false)
 
     }
 }
+
 app.start()
 
