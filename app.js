@@ -306,12 +306,6 @@ const app = {
                 const newCdWidth = cdWidth - scrollTop;
                 cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0;
                 cd.style.opacity = newCdWidth / cdWidth;
-                if(scrollTop > 50){
-                    $('.locationmusic').classList.add('none')
-                } else {
-                    $('.locationmusic').classList.remove('none')
-                }
-                
             }
         // Play songs
         playBtn.onclick = function() {
