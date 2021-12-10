@@ -60,6 +60,7 @@ html {
     display:flex;
     justify-content: space-around;
 }
+
 .vietnamese,
 .kr,
 .us,
@@ -285,6 +286,9 @@ header h2 {
 .download a {
     text-decoration: none;
     color: #000;
+}
+.blockoptions .like:hover {
+    cursor: pointer;
 }
 .box {
     position: fixed;
