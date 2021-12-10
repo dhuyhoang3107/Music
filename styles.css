@@ -286,6 +286,7 @@ header h2 {
 .download a {
     text-decoration: none;
     color: #000;
+    display: block;
 }
 .blockoptions .like:hover {
     cursor: pointer;
