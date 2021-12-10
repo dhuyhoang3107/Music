@@ -280,14 +280,7 @@ const app = {
         love: [
         ],
     },
-    // defineProperties: function(isMusic) {
-    //     let currentMusic
-    //     if(isMusic){
-    //         currentMusic = isMusic
-    //         console.log(currentMusic);
-    //     } else {
-    //         currentMusic = 'vietnamese'
-    //     }
+    // defineProperties: function() {
     //     Object.defineProperty(this, 'currentSong', {
     //         get: function() {
     //             return this.songs[currentMusic][this.currentIndex]
@@ -427,8 +420,10 @@ const app = {
                 var index = e.target.closest('.option').dataset.index
                 var image = e.target.closest('.option').dataset.image
                 var path = e.target.closest('.option').dataset.path
-                    const getLocalSongs = _this.songs.love
-                    if(getLocalSongs[index]){
+                    const getLocalSongs = _this.songs.love.filter(function(value){
+                        return value.name == name
+                    })
+                    if(getLocalSongs.length >= 1){
                         $('.like').innerText = 'Xóa bài hát khỏi danh sách yêu thích'
                         $('.like').classList.add('active')
                         $('.like').setAttribute('value','unlike')
