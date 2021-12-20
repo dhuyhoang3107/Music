@@ -345,6 +345,12 @@ const app = {
         progress.oninput = function (e){
             const seekTime = (audio.duration / 100) * e.target.value;
             audio.currentTime = seekTime
+            audio.pause()
+        }
+        progress.onchange = function (e){
+            const seekTime = (audio.duration / 100) * e.target.value;
+            audio.currentTime = seekTime
+            audio.play()
         }
 
         // Next một bài hát
