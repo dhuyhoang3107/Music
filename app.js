@@ -364,59 +364,58 @@ const PLAYLISTS = [
         id: 'pl-vpop-hot',
         title: 'V-Pop Đỉnh Cao',
         subtitle: 'Sơn Tùng M-TP, Vũ, Da LAB...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/11/04/3/8/8/3/1636011886537_500.jpg',
         songIds: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10']
     },
     {
         id: 'pl-usuk-chill',
         title: 'US-UK Chill Vibes',
         subtitle: 'Justin Bieber, Taylor Swift...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/10/26/8/0/0/c/1635214953080_500.jpg',
         songIds: ['s11', 's12', 's15', 's17', 's18', 's19', 's20']
     },
     {
         id: 'pl-kpop-bigbang',
         title: 'BIGBANG Best',
         subtitle: 'Tuyển tập BIGBANG bất hủ',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/06/04/8/c/c/2/1622796898030_500.jpg',
         songIds: ['s21', 's22', 's23', 's24', 's25', 's26']
     },
     {
         id: 'pl-iu',
         title: 'IU - Indie Princess',
         subtitle: 'Những giai điệu ngọt ngào',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/02/22/d/c/4/1/1614000953552_500.jpg',
         songIds: ['s27', 's28']
     },
     {
         id: 'pl-cpop',
         title: 'C-Pop Bất Hủ',
         subtitle: 'Châu Kiệt Luân, Cúc Tịnh Y...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/05/06/0/2/d/c/1620280385568_500.jpg',
         songIds: ['s30', 's31', 's32', 's33', 's34']
     },
     {
         id: 'pl-justin',
         title: 'Justin Bieber Collection',
         subtitle: 'Tuyển chọn các hit của JB',
-        cover: 'https://avatar-nct.nixcdn.com/song/2020/10/16/7/4/6/2/1602823109092.jpg',
         songIds: ['s11', 's16', 's17', 's18', 's19', 's20']
     },
     {
         id: 'pl-vpop-rap',
         title: 'V-Rap Mới Nhất',
         subtitle: 'Phúc Du, Pháo, Negav...',
-        cover: 'https://avatar-nct.nixcdn.com/song/2021/08/10/b/2/e/0/1628579601228.jpg',
         songIds: ['s5', 's8', 's2', 's9']
     },
     {
         id: 'pl-relax',
         title: 'Nhạc Hoa Nhẹ Nhàng',
         subtitle: 'Thư giãn cùng giai điệu Á Đông',
-        cover: 'https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786602391.jpg',
         songIds: ['s30', 's32', 's34', 's31']
     }
 ];
+
+PLAYLISTS.forEach(pl => {
+    if (!pl.cover) {
+        const first = SONG_BY_ID[pl.songIds[0]];
+        pl.cover = first ? first.image : '';
+    }
+});
 
 const NEW_RELEASES = ['s1', 's2', 's3', 's4', 's7', 's9', 's12', 's15'];
 
@@ -694,6 +693,7 @@ function renderHero() {
     const featured = SONG_BY_ID['s3'];
     return `
         <div class="hero">
+            <div class="hero__bg" style="background-image:url('${featured.image}')"></div>
             <div class="hero__content">
                 <div class="hero__eyebrow">NHẠC HOT MỖI NGÀY</div>
                 <div class="hero__title">${escapeHtml(featured.name)}</div>
@@ -913,11 +913,12 @@ function renderVpop() {
 }
 
 function renderGenres() {
+    const coverFor = key => (SONGS.find(s => s.genre === key) || SONGS[0]).image;
     const groups = [
-        { key: 'vpop', name: 'V-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/11/04/3/8/8/3/1636011886537_500.jpg' },
-        { key: 'us-uk', name: 'US-UK', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/10/26/8/0/0/c/1635214953080_500.jpg' },
-        { key: 'kpop', name: 'K-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/06/04/8/c/c/2/1622796898030_500.jpg' },
-        { key: 'cpop', name: 'C-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/05/06/0/2/d/c/1620280385568_500.jpg' }
+        { key: 'vpop', name: 'V-POP', cover: coverFor('vpop') },
+        { key: 'us-uk', name: 'US-UK', cover: coverFor('us-uk') },
+        { key: 'kpop', name: 'K-POP', cover: coverFor('kpop') },
+        { key: 'cpop', name: 'C-POP', cover: coverFor('cpop') }
     ];
     return `
         <section class="section">
@@ -1025,6 +1026,7 @@ function renderPlaylistDetail(plId) {
     contentEl.innerHTML = `
         <section class="section" style="margin-top:14px">
             <div class="hero" style="background:linear-gradient(135deg,#3a1f5a 0%, #c273ed 100%); height:220px;">
+                <div class="hero__bg" style="background-image:url('${pl.cover}')"></div>
                 <div class="hero__content" style="max-width:80%; display:flex; gap:18px; align-items:center;">
                     <div style="width:160px; height:160px; border-radius:10px; background-image:url('${pl.cover}'); background-size:cover; background-position:center; box-shadow:0 12px 30px -10px rgba(0,0,0,.6);"></div>
                     <div>
