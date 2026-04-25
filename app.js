@@ -480,6 +480,9 @@ const queueClose = $('#queueClose');
 const queueListEl = $('#queueList');
 const contentEl = $('#content');
 const searchInput = $('#searchInput');
+const sidebar = $('#sidebar');
+const sidebarBackdrop = $('#sidebarBackdrop');
+const menuBtn = $('#menuBtn');
 
 /* -----------------------------------------------------
    HELPERS
@@ -686,6 +689,21 @@ $$('.queue-tab').forEach(tab => {
     });
 });
 
+/* Mobile drawer sidebar */
+function openSidebar() {
+    sidebar.classList.add('open');
+    sidebarBackdrop.classList.add('open');
+}
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarBackdrop.classList.remove('open');
+}
+menuBtn.addEventListener('click', () => {
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+});
+sidebarBackdrop.addEventListener('click', closeSidebar);
+
 /* -----------------------------------------------------
    RENDERERS
    ----------------------------------------------------- */
@@ -797,6 +815,7 @@ function navigate(route) {
     contentEl.innerHTML = fn();
     contentEl.scrollTop = 0;
     refreshActiveStates();
+    closeSidebar();
 }
 
 function renderHome() {

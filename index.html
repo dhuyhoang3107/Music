@@ -22,7 +22,8 @@
 <body>
     <div class="app" id="app">
         <!-- ============== SIDEBAR ============== -->
-        <aside class="sidebar">
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        <aside class="sidebar" id="sidebar">
             <a href="#" class="sidebar__logo" data-route="home">
                 <span class="sidebar__logo-mark">
                     <i class="fa-solid fa-headphones-simple"></i>
@@ -105,8 +106,11 @@
         <main class="main">
             <header class="topbar">
                 <div class="topbar__nav">
-                    <button class="icon-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="icon-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="icon-btn topbar__menu" id="menuBtn" title="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <button class="icon-btn topbar__back"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="icon-btn topbar__back"><i class="fa-solid fa-chevron-right"></i></button>
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input
@@ -117,10 +121,10 @@
                     </div>
                 </div>
                 <div class="topbar__actions">
-                    <button class="icon-btn" title="Chủ đề"><i class="fa-solid fa-palette"></i></button>
-                    <button class="icon-btn" title="Tải lên"><i class="fa-solid fa-cloud-arrow-up"></i></button>
-                    <button class="icon-btn" title="VIP"><i class="fa-solid fa-crown"></i></button>
-                    <button class="icon-btn" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
+                    <button class="icon-btn topbar__action" title="Chủ đề"><i class="fa-solid fa-palette"></i></button>
+                    <button class="icon-btn topbar__action" title="Tải lên"><i class="fa-solid fa-cloud-arrow-up"></i></button>
+                    <button class="icon-btn topbar__action" title="VIP"><i class="fa-solid fa-crown"></i></button>
+                    <button class="icon-btn topbar__action" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
                     <button class="avatar-btn">
                         <img src="https://i.pravatar.cc/40?img=12" alt="user" />
                     </button>
