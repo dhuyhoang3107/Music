@@ -1,80 +1,221 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Music player</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <title>App Music</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zing MP3 - Nghe nhạc miễn phí, tải nhạc hot, nhạc mới chất lượng cao</title>
+    <link rel="icon" href="https://stc-id.nixcdn.com/v11/images/zing_mp3.ico" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+    <div class="app" id="app">
+        <!-- ============== SIDEBAR ============== -->
+        <aside class="sidebar">
+            <a href="#" class="sidebar__logo" data-route="home">
+                <img
+                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/logo-dark.svg"
+                    alt="Zing MP3"
+                />
+            </a>
 
+            <nav class="sidebar__nav">
+                <a href="#" class="nav-item active" data-route="home">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Cá Nhân</span>
+                </a>
+                <a href="#" class="nav-item" data-route="discover">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <span>Khám Phá</span>
+                </a>
+                <a href="#" class="nav-item" data-route="zingchart">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>#zingchart</span>
+                </a>
+                <a href="#" class="nav-item" data-route="radio">
+                    <i class="fa-solid fa-tower-broadcast"></i>
+                    <span>Radio</span>
+                </a>
+                <a href="#" class="nav-item" data-route="follow">
+                    <i class="fa-solid fa-podcast"></i>
+                    <span>Theo Dõi</span>
+                </a>
+            </nav>
 
-    <div class="player">
-        <!-- Dashboard -->
-        <div class="dashboard">
-            <!-- Header -->
-            <header>
-                <h4>Now playing:</h4>
-                <h2>String 57th & 9th</h2>
+            <div class="sidebar__divider"></div>
+
+            <nav class="sidebar__nav sidebar__nav--secondary">
+                <a href="#" class="nav-item" data-route="vpop">
+                    <i class="fa-solid fa-music"></i>
+                    <span>Nhạc Mới</span>
+                </a>
+                <a href="#" class="nav-item" data-route="genres">
+                    <i class="fa-solid fa-icons"></i>
+                    <span>Thể Loại</span>
+                </a>
+                <a href="#" class="nav-item" data-route="top100">
+                    <i class="fa-solid fa-star"></i>
+                    <span>Top 100</span>
+                </a>
+                <a href="#" class="nav-item" data-route="mv">
+                    <i class="fa-solid fa-video"></i>
+                    <span>MV</span>
+                </a>
+            </nav>
+
+            <div class="sidebar__divider"></div>
+
+            <nav class="sidebar__nav sidebar__nav--library">
+                <a href="#" class="nav-item" data-route="library">
+                    <i class="fa-regular fa-circle-user"></i>
+                    <span>Thư Viện</span>
+                </a>
+                <a href="#" class="nav-item" data-route="liked">
+                    <i class="fa-solid fa-heart"></i>
+                    <span>Bài Hát Yêu Thích</span>
+                </a>
+                <a href="#" class="nav-item" data-route="recent">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    <span>Gần Đây</span>
+                </a>
+            </nav>
+
+            <div class="sidebar__upgrade">
+                <h4>Nghe nhạc không quảng cáo</h4>
+                <p>Cùng nhiều quyền lợi hấp dẫn khác</p>
+                <button class="btn-upgrade">
+                    <i class="fa-solid fa-crown"></i>
+                    NÂNG CẤP VIP
+                </button>
+            </div>
+        </aside>
+
+        <!-- ============== MAIN ============== -->
+        <main class="main">
+            <header class="topbar">
+                <div class="topbar__nav">
+                    <button class="icon-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="icon-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
+                        />
+                    </div>
+                </div>
+                <div class="topbar__actions">
+                    <button class="icon-btn" title="Chủ đề"><i class="fa-solid fa-palette"></i></button>
+                    <button class="icon-btn" title="Tải lên"><i class="fa-solid fa-cloud-arrow-up"></i></button>
+                    <button class="icon-btn" title="VIP"><i class="fa-solid fa-crown"></i></button>
+                    <button class="icon-btn" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
+                    <button class="avatar-btn">
+                        <img src="https://i.pravatar.cc/40?img=12" alt="user" />
+                    </button>
+                </div>
             </header>
 
-            <!-- CD -->
-            <div class="cd">
-                <div class="cd-thumb" style="background-image: url('https://avatar-ex-swe.nixcdn.com/song/2021/11/03/a/e/9/4/1635933038850_500.jpg')">
-                </div>
+            <div class="content" id="content">
+                <!-- Sections rendered by JS -->
             </div>
 
-            <!-- Control -->
-            <div class="control">
-                <div class="btn btn-repeat">
-                    <i class="fas fa-redo"></i>
-                </div>
-                <div class="btn btn-prev">
-                    <i class="fas fa-step-backward"></i>
-                </div>
-                <div class="btn btn-toggle-play">
-                    <i class="fas fa-pause icon-pause"></i>
-                    <i class="fas fa-play icon-play"></i>
-                </div>
-                <div class="btn btn-next">
-                    <i class="fas fa-step-forward"></i>
-                </div>
-                <div class="btn btn-random">
-                    <i class="fas fa-random"></i>
-                </div>
+            <footer class="footer-credit">
+                <p>Zing MP3 Clone &middot; Built for learning purposes</p>
+            </footer>
+        </main>
+
+        <!-- ============== QUEUE / NOW PLAYING SIDEBAR ============== -->
+        <aside class="queue-panel" id="queuePanel">
+            <div class="queue-tabs">
+                <button class="queue-tab active" data-tab="queue">Danh sách phát</button>
+                <button class="queue-tab" data-tab="recent">Nghe gần đây</button>
+                <button class="queue-close" id="queueClose"><i class="fa-solid fa-xmark"></i></button>
             </div>
-            <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-            <audio id="audio" src=""></audio>
-        </div>
-
-        <!-- Playlist -->
-        <div class="playlist">
-            
-        </div>
-
-        <div class="locationmusic">
-            <div class="vietnamese select" value="vietnamese">vn</div>
-            <div class="us" value="english">us</div>
-            <div class="kr" value="korea">kr</div>
-            <div class="jp" value="china">cn</div>
-            <div class="love" value="love">love</div>
-        </div>
-        <div class="blockoptions">
-            <div class="download" id="download"><a>Tải</a></div>
-            <div class="like" id="like"></div>
-        </div>
-        <div class="box"></div>
+            <div class="queue-list" id="queueList"></div>
+        </aside>
     </div>
 
-    <!-- Design from: https://static.collectui.com/shots/3671744/musicloud-revolutionary-app-for-music-streaming-large -->
+    <!-- ============== BOTTOM PLAYER BAR ============== -->
+    <div class="player-bar" id="playerBar">
+        <div class="player-bar__left">
+            <div class="now-playing">
+                <div class="now-playing__thumb" id="npThumb"></div>
+                <div class="now-playing__info">
+                    <div class="np-title" id="npTitle">Chưa chọn bài hát</div>
+                    <div class="np-artist" id="npArtist">--</div>
+                </div>
+                <div class="now-playing__actions">
+                    <button class="icon-btn" id="likeBtn" title="Yêu thích">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                    <button class="icon-btn" title="Khác"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="player-bar__center">
+            <div class="player-controls">
+                <button class="ctrl-btn" id="shuffleBtn" title="Phát ngẫu nhiên">
+                    <i class="fa-solid fa-shuffle"></i>
+                </button>
+                <button class="ctrl-btn" id="prevBtn" title="Trước">
+                    <i class="fa-solid fa-backward-step"></i>
+                </button>
+                <button class="ctrl-btn ctrl-btn--play" id="playBtn" title="Phát">
+                    <i class="fa-solid fa-play icon-play"></i>
+                    <i class="fa-solid fa-pause icon-pause"></i>
+                </button>
+                <button class="ctrl-btn" id="nextBtn" title="Tiếp theo">
+                    <i class="fa-solid fa-forward-step"></i>
+                </button>
+                <button class="ctrl-btn" id="repeatBtn" title="Lặp lại">
+                    <i class="fa-solid fa-repeat"></i>
+                </button>
+            </div>
+            <div class="player-progress">
+                <span class="time" id="curTime">00:00</span>
+                <div class="progress-bar" id="progressBar">
+                    <input
+                        type="range"
+                        id="progress"
+                        value="0"
+                        min="0"
+                        max="100"
+                        step="0.1"
+                    />
+                </div>
+                <span class="time" id="durTime">00:00</span>
+            </div>
+        </div>
+
+        <div class="player-bar__right">
+            <button class="icon-btn" title="MV"><i class="fa-solid fa-tv"></i></button>
+            <button class="icon-btn" title="Lời bài hát"><i class="fa-solid fa-microphone-lines"></i></button>
+            <button class="icon-btn" title="Chế độ cửa sổ"><i class="fa-regular fa-window-restore"></i></button>
+            <div class="volume">
+                <button class="icon-btn" id="muteBtn" title="Âm lượng"><i class="fa-solid fa-volume-high"></i></button>
+                <input type="range" id="volume" min="0" max="100" value="80" />
+            </div>
+            <div class="vline"></div>
+            <button class="icon-btn icon-btn--queue" id="queueBtn" title="Danh sách phát">
+                <i class="fa-solid fa-list"></i>
+            </button>
+        </div>
+    </div>
+
+    <audio id="audio"></audio>
     <script src="app.js"></script>
 </body>
-
 </html>
