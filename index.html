@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zing MP3 - Nghe nhạc miễn phí, tải nhạc hot, nhạc mới chất lượng cao</title>
-    <link rel="icon" href="https://stc-id.nixcdn.com/v11/images/zing_mp3.ico" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23c273ed'/%3E%3Cpath fill='%23fff' d='M32 14a18 18 0 0 0-18 18v8a4 4 0 0 0 4 4h6V32h-6v-0a14 14 0 1 1 28 0v12h-6v12h6a4 4 0 0 0 4-4v-20A18 18 0 0 0 32 14z'/%3E%3C/svg%3E" />
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -22,12 +22,13 @@
 <body>
     <div class="app" id="app">
         <!-- ============== SIDEBAR ============== -->
-        <aside class="sidebar">
+        <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+        <aside class="sidebar" id="sidebar">
             <a href="#" class="sidebar__logo" data-route="home">
-                <img
-                    src="https://zmp3-static.zmdcdn.me/skins/zmp3-v6.1/images/logo-dark.svg"
-                    alt="Zing MP3"
-                />
+                <span class="sidebar__logo-mark">
+                    <i class="fa-solid fa-headphones-simple"></i>
+                </span>
+                <span class="sidebar__logo-text">Zing MP3</span>
             </a>
 
             <nav class="sidebar__nav">
@@ -38,6 +39,10 @@
                 <a href="#" class="nav-item" data-route="discover">
                     <i class="fa-solid fa-compact-disc"></i>
                     <span>Khám Phá</span>
+                </a>
+                <a href="#" class="nav-item" data-route="online">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                    <span>Zing Live</span>
                 </a>
                 <a href="#" class="nav-item" data-route="zingchart">
                     <i class="fa-solid fa-chart-line"></i>
@@ -105,8 +110,11 @@
         <main class="main">
             <header class="topbar">
                 <div class="topbar__nav">
-                    <button class="icon-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                    <button class="icon-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                    <button class="icon-btn topbar__menu" id="menuBtn" title="Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <button class="icon-btn topbar__back"><i class="fa-solid fa-chevron-left"></i></button>
+                    <button class="icon-btn topbar__back"><i class="fa-solid fa-chevron-right"></i></button>
                     <div class="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                         <input
@@ -117,10 +125,10 @@
                     </div>
                 </div>
                 <div class="topbar__actions">
-                    <button class="icon-btn" title="Chủ đề"><i class="fa-solid fa-palette"></i></button>
-                    <button class="icon-btn" title="Tải lên"><i class="fa-solid fa-cloud-arrow-up"></i></button>
-                    <button class="icon-btn" title="VIP"><i class="fa-solid fa-crown"></i></button>
-                    <button class="icon-btn" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
+                    <button class="icon-btn topbar__action" title="Chủ đề"><i class="fa-solid fa-palette"></i></button>
+                    <button class="icon-btn topbar__action" title="Tải lên"><i class="fa-solid fa-cloud-arrow-up"></i></button>
+                    <button class="icon-btn topbar__action" title="VIP"><i class="fa-solid fa-crown"></i></button>
+                    <button class="icon-btn topbar__action" title="Cài đặt"><i class="fa-solid fa-gear"></i></button>
                     <button class="avatar-btn">
                         <img src="https://i.pravatar.cc/40?img=12" alt="user" />
                     </button>

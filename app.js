@@ -9,6 +9,46 @@ const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 const STORAGE_KEY = 'ZMP3_CLONE_STATE_V1';
 
 /* -----------------------------------------------------
+   BACKEND API CLIENT (proxy to zingmp3.vn)
+   ----------------------------------------------------- */
+const API_BASE = ''; // same origin
+const Backend = {
+    online: false,
+    async health() {
+        try {
+            const r = await fetch(API_BASE + '/api/health', { cache: 'no-store' });
+            this.online = r.ok;
+        } catch {
+            this.online = false;
+        }
+        return this.online;
+    },
+    async search(q) {
+        const r = await fetch(API_BASE + '/api/search?q=' + encodeURIComponent(q));
+        if (!r.ok) throw new Error('search failed');
+        return r.json();
+    },
+    async home() {
+        const r = await fetch(API_BASE + '/api/home');
+        if (!r.ok) throw new Error('home failed');
+        return r.json();
+    },
+    async chartHome() {
+        const r = await fetch(API_BASE + '/api/chart-home');
+        if (!r.ok) throw new Error('chart failed');
+        return r.json();
+    },
+    async playlist(zingId) {
+        const r = await fetch(API_BASE + '/api/playlist/' + encodeURIComponent(zingId));
+        if (!r.ok) throw new Error('playlist failed');
+        return r.json();
+    },
+    streamUrl(zingId) {
+        return API_BASE + '/api/stream?id=' + encodeURIComponent(zingId);
+    }
+};
+
+/* -----------------------------------------------------
    DATA - Songs
    ----------------------------------------------------- */
 const SONGS = [
@@ -356,6 +396,23 @@ const SONGS = [
 
 const SONG_BY_ID = Object.fromEntries(SONGS.map(s => [s.id, s]));
 
+/* Dynamically registered online songs / playlists fetched from backend */
+const ONLINE_PLAYLISTS = [];
+const HOME_NEW_SONGS = []; // online "Mới phát hành" ids
+const HOME_CHART_SONGS = []; // online "#zingchart" ids
+const ONLINE_PLAYLIST_BY_ID = {};
+
+function registerSong(s) {
+    if (!s || !s.id) return null;
+    if (!SONG_BY_ID[s.id]) SONG_BY_ID[s.id] = s;
+    return SONG_BY_ID[s.id];
+}
+function registerPlaylist(pl) {
+    if (!pl || !pl.id) return null;
+    ONLINE_PLAYLIST_BY_ID[pl.id] = pl;
+    return pl;
+}
+
 /* -----------------------------------------------------
    DATA - Playlists, charts, banners
    ----------------------------------------------------- */
@@ -364,59 +421,58 @@ const PLAYLISTS = [
         id: 'pl-vpop-hot',
         title: 'V-Pop Đỉnh Cao',
         subtitle: 'Sơn Tùng M-TP, Vũ, Da LAB...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/11/04/3/8/8/3/1636011886537_500.jpg',
         songIds: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10']
     },
     {
         id: 'pl-usuk-chill',
         title: 'US-UK Chill Vibes',
         subtitle: 'Justin Bieber, Taylor Swift...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/10/26/8/0/0/c/1635214953080_500.jpg',
         songIds: ['s11', 's12', 's15', 's17', 's18', 's19', 's20']
     },
     {
         id: 'pl-kpop-bigbang',
         title: 'BIGBANG Best',
         subtitle: 'Tuyển tập BIGBANG bất hủ',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/06/04/8/c/c/2/1622796898030_500.jpg',
         songIds: ['s21', 's22', 's23', 's24', 's25', 's26']
     },
     {
         id: 'pl-iu',
         title: 'IU - Indie Princess',
         subtitle: 'Những giai điệu ngọt ngào',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/02/22/d/c/4/1/1614000953552_500.jpg',
         songIds: ['s27', 's28']
     },
     {
         id: 'pl-cpop',
         title: 'C-Pop Bất Hủ',
         subtitle: 'Châu Kiệt Luân, Cúc Tịnh Y...',
-        cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/05/06/0/2/d/c/1620280385568_500.jpg',
         songIds: ['s30', 's31', 's32', 's33', 's34']
     },
     {
         id: 'pl-justin',
         title: 'Justin Bieber Collection',
         subtitle: 'Tuyển chọn các hit của JB',
-        cover: 'https://avatar-nct.nixcdn.com/song/2020/10/16/7/4/6/2/1602823109092.jpg',
         songIds: ['s11', 's16', 's17', 's18', 's19', 's20']
     },
     {
         id: 'pl-vpop-rap',
         title: 'V-Rap Mới Nhất',
         subtitle: 'Phúc Du, Pháo, Negav...',
-        cover: 'https://avatar-nct.nixcdn.com/song/2021/08/10/b/2/e/0/1628579601228.jpg',
         songIds: ['s5', 's8', 's2', 's9']
     },
     {
         id: 'pl-relax',
         title: 'Nhạc Hoa Nhẹ Nhàng',
         subtitle: 'Thư giãn cùng giai điệu Á Đông',
-        cover: 'https://avatar-nct.nixcdn.com/song/2019/05/02/d/4/7/3/1556786602391.jpg',
         songIds: ['s30', 's32', 's34', 's31']
     }
 ];
+
+PLAYLISTS.forEach(pl => {
+    if (!pl.cover) {
+        const first = SONG_BY_ID[pl.songIds[0]];
+        pl.cover = first ? first.image : '';
+    }
+});
 
 const NEW_RELEASES = ['s1', 's2', 's3', 's4', 's7', 's9', 's12', 's15'];
 
@@ -481,6 +537,9 @@ const queueClose = $('#queueClose');
 const queueListEl = $('#queueList');
 const contentEl = $('#content');
 const searchInput = $('#searchInput');
+const sidebar = $('#sidebar');
+const sidebarBackdrop = $('#sidebarBackdrop');
+const menuBtn = $('#menuBtn');
 
 /* -----------------------------------------------------
    HELPERS
@@ -516,7 +575,11 @@ function escapeHtml(str = '') {
 function loadCurrent({ autoplay = false } = {}) {
     const song = currentSong();
     if (!song) return;
-    audio.src = song.path;
+    if (song.source === 'zmp3' && song.zingId) {
+        audio.src = Backend.streamUrl(song.zingId);
+    } else {
+        audio.src = song.path;
+    }
     npTitle.textContent = song.name;
     npArtist.textContent = song.artist;
     npThumb.style.backgroundImage = `url('${song.image}')`;
@@ -637,6 +700,30 @@ audio.addEventListener('ended', () => {
         next();
     }
 });
+audio.addEventListener('error', () => {
+    const s = currentSong();
+    if (s && s.source === 'zmp3') {
+        toast('Không phát được "' + (s.name || '') + '" (có thể do giới hạn vùng/VIP). Đang chuyển bài...');
+        setTimeout(next, 800);
+    }
+});
+
+/* -----------------------------------------------------
+   TOAST
+   ----------------------------------------------------- */
+function toast(msg, ms = 3500) {
+    let el = document.getElementById('toast');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'toast';
+        el.className = 'toast';
+        document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.classList.add('show');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => el.classList.remove('show'), ms);
+}
 
 /* -----------------------------------------------------
    CONTROL EVENTS
@@ -687,6 +774,21 @@ $$('.queue-tab').forEach(tab => {
     });
 });
 
+/* Mobile drawer sidebar */
+function openSidebar() {
+    sidebar.classList.add('open');
+    sidebarBackdrop.classList.add('open');
+}
+function closeSidebar() {
+    sidebar.classList.remove('open');
+    sidebarBackdrop.classList.remove('open');
+}
+menuBtn.addEventListener('click', () => {
+    if (sidebar.classList.contains('open')) closeSidebar();
+    else openSidebar();
+});
+sidebarBackdrop.addEventListener('click', closeSidebar);
+
 /* -----------------------------------------------------
    RENDERERS
    ----------------------------------------------------- */
@@ -694,6 +796,7 @@ function renderHero() {
     const featured = SONG_BY_ID['s3'];
     return `
         <div class="hero">
+            <div class="hero__bg" style="background-image:url('${featured.image}')"></div>
             <div class="hero__content">
                 <div class="hero__eyebrow">NHẠC HOT MỖI NGÀY</div>
                 <div class="hero__title">${escapeHtml(featured.name)}</div>
@@ -779,6 +882,7 @@ function renderSongRow(s, contextIds) {
 const routes = {
     home: renderHome,
     discover: renderDiscover,
+    online: renderOnline,
     zingchart: renderZingChart,
     radio: renderRadio,
     follow: renderFollow,
@@ -797,12 +901,30 @@ function navigate(route) {
     contentEl.innerHTML = fn();
     contentEl.scrollTop = 0;
     refreshActiveStates();
+    closeSidebar();
 }
 
 function renderHome() {
     const newReleases = songsByIds(NEW_RELEASES);
     const featured = PLAYLISTS.slice(0, 4);
     const more = PLAYLISTS.slice(4);
+    const onlineCharts = HOME_CHART_SONGS.length ? HOME_CHART_SONGS : CHART_TOP;
+    const onlineNew = HOME_NEW_SONGS.length ? songsByIds(HOME_NEW_SONGS) : newReleases;
+
+    const onlineSection = ONLINE_PLAYLISTS.length
+        ? `
+        <section class="section">
+            <div class="section-head">
+                <h2>Đề Xuất Từ Zing MP3 <span class="badge badge--online">LIVE</span></h2>
+                <a href="#" class="more" data-route="online">TẤT CẢ <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+            <div class="quick-grid">
+                ${ONLINE_PLAYLISTS.slice(0, 8).map(renderOnlinePlaylistCard).join('')}
+            </div>
+        </section>
+        `
+        : '';
+
     return `
         ${renderHero()}
         <section class="section">
@@ -815,25 +937,27 @@ function renderHome() {
             </div>
         </section>
 
+        ${onlineSection}
+
         <section class="section">
             <div class="section-head">
-                <h2>Mới Phát Hành</h2>
+                <h2>Mới Phát Hành ${HOME_NEW_SONGS.length ? '<span class="badge badge--online">LIVE</span>' : ''}</h2>
                 <a href="#" class="more" data-route="vpop">TẤT CẢ <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="quick-grid">
-                ${newReleases.map(renderSongCard).join('')}
+                ${onlineNew.map(renderSongCard).join('')}
             </div>
         </section>
 
         <section class="section">
             <div class="section-head">
-                <h2>#zingchart</h2>
+                <h2>#zingchart ${HOME_CHART_SONGS.length ? '<span class="badge badge--online">LIVE</span>' : ''}</h2>
                 <a href="#" class="more" data-route="zingchart">XEM CHI TIẾT <i class="fa-solid fa-chevron-right"></i></a>
             </div>
             <div class="chart">
-                <h3>BXH Bài Hát V-POP</h3>
+                <h3>BXH Bài Hát ${HOME_CHART_SONGS.length ? 'Realtime' : 'V-POP'}</h3>
                 <div class="chart__list">
-                    ${CHART_TOP.slice(0, 5).map((id, i) => renderChartRow(id, i + 1, CHART_TOP)).join('')}
+                    ${onlineCharts.slice(0, 5).map((id, i) => renderChartRow(id, i + 1, onlineCharts)).join('')}
                 </div>
             </div>
         </section>
@@ -849,6 +973,22 @@ function renderHome() {
     `;
 }
 
+function renderOnlinePlaylistCard(pl) {
+    return `
+        <div class="card" data-online-playlist="${pl.zingId}">
+            <div class="card__cover" style="background-image:url('${pl.cover}')">
+                <div class="card__overlay">
+                    <button title="Yêu thích"><i class="fa-regular fa-heart"></i></button>
+                    <button class="play" title="Phát"><i class="fa-solid fa-play"></i></button>
+                    <button title="Khác"><i class="fa-solid fa-ellipsis"></i></button>
+                </div>
+            </div>
+            <div class="card__title">${escapeHtml(pl.title)}</div>
+            <div class="card__subtitle">${escapeHtml(pl.subtitle || '')}</div>
+        </div>
+    `;
+}
+
 function renderDiscover() {
     return `
         <section class="section">
@@ -856,6 +996,39 @@ function renderDiscover() {
             <div class="quick-grid">
                 ${PLAYLISTS.map(renderPlaylistCard).join('')}
             </div>
+        </section>
+        ${ONLINE_PLAYLISTS.length ? `
+            <section class="section">
+                <div class="section-head"><h2>Playlist Từ Zing MP3 <span class="badge badge--online">LIVE</span></h2></div>
+                <div class="quick-grid">
+                    ${ONLINE_PLAYLISTS.map(renderOnlinePlaylistCard).join('')}
+                </div>
+            </section>
+        ` : ''}
+    `;
+}
+
+function renderOnline() {
+    if (!Backend.online) {
+        return `
+            <section class="section">
+                <div class="section-head"><h2>Khám Phá Online</h2></div>
+                <div class="empty-state">
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                    <h3>Chưa kết nối được Zing MP3</h3>
+                    <p>Cần chạy backend Node.js (<code>npm start</code>) để stream nhạc trực tiếp từ Zing MP3.</p>
+                </div>
+            </section>
+        `;
+    }
+    return `
+        <section class="section">
+            <div class="section-head"><h2>Khám Phá Online <span class="badge badge--online">LIVE</span></h2></div>
+            ${ONLINE_PLAYLISTS.length ? `
+                <div class="quick-grid">
+                    ${ONLINE_PLAYLISTS.map(renderOnlinePlaylistCard).join('')}
+                </div>
+            ` : '<p style="color:var(--text-muted)">Đang tải...</p>'}
         </section>
     `;
 }
@@ -913,11 +1086,12 @@ function renderVpop() {
 }
 
 function renderGenres() {
+    const coverFor = key => (SONGS.find(s => s.genre === key) || SONGS[0]).image;
     const groups = [
-        { key: 'vpop', name: 'V-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/11/04/3/8/8/3/1636011886537_500.jpg' },
-        { key: 'us-uk', name: 'US-UK', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/10/26/8/0/0/c/1635214953080_500.jpg' },
-        { key: 'kpop', name: 'K-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/06/04/8/c/c/2/1622796898030_500.jpg' },
-        { key: 'cpop', name: 'C-POP', cover: 'https://avatar-ex-swe.nixcdn.com/playlist/2021/05/06/0/2/d/c/1620280385568_500.jpg' }
+        { key: 'vpop', name: 'V-POP', cover: coverFor('vpop') },
+        { key: 'us-uk', name: 'US-UK', cover: coverFor('us-uk') },
+        { key: 'kpop', name: 'K-POP', cover: coverFor('kpop') },
+        { key: 'cpop', name: 'C-POP', cover: coverFor('cpop') }
     ];
     return `
         <section class="section">
@@ -1017,6 +1191,52 @@ function renderRecent() {
     `;
 }
 
+/* Online playlist detail (fetched from backend on demand) */
+async function renderOnlinePlaylistDetail(zingId, autoplay = false) {
+    contentEl.innerHTML = `
+        <section class="section" style="margin-top:14px">
+            <div class="loading-row" style="padding:40px; text-align:center;">
+                <i class="fa-solid fa-spinner fa-spin"></i> Đang tải playlist từ Zing MP3...
+            </div>
+        </section>
+    `;
+    contentEl.scrollTop = 0;
+    try {
+        const data = await Backend.playlist(zingId);
+        const songs = (data.songs || []).map(registerSong).filter(Boolean);
+        const ids = songs.map(s => s.id);
+        contentEl.innerHTML = `
+            <section class="section" style="margin-top:14px">
+                <div class="hero" style="background:linear-gradient(135deg,#3a1f5a 0%, #c273ed 100%); height:220px;">
+                    <div class="hero__bg" style="background-image:url('${data.cover}')"></div>
+                    <div class="hero__content" style="max-width:90%; display:flex; gap:18px; align-items:center;">
+                        <div style="width:160px; height:160px; border-radius:10px; background-image:url('${data.cover}'); background-size:cover; background-position:center; box-shadow:0 12px 30px -10px rgba(0,0,0,.6); flex-shrink:0;"></div>
+                        <div style="min-width:0;">
+                            <div class="hero__eyebrow">PLAYLIST <span class="badge badge--online">LIVE</span></div>
+                            <div class="hero__title">${escapeHtml(data.title || '')}</div>
+                            <div class="hero__subtitle">${escapeHtml((data.subtitle || '').slice(0, 120))} • ${songs.length} bài hát</div>
+                            <button class="hero__btn" id="playOnlinePlaylistBtn">
+                                <i class="fa-solid fa-play"></i> Phát Tất Cả
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <div class="song-list">
+                    ${songs.map(s => renderSongRow(s, ids)).join('')}
+                </div>
+            </section>
+        `;
+        $('#playOnlinePlaylistBtn')?.addEventListener('click', () => setQueue(ids, 0));
+        if (autoplay && ids.length) setQueue(ids, 0);
+        refreshActiveStates();
+    } catch (err) {
+        toast('Không tải được playlist từ Zing MP3');
+        contentEl.innerHTML = `<section class="section"><p style="color:var(--text-muted)">Lỗi tải playlist.</p></section>`;
+    }
+}
+
 /* Playlist detail (when clicking a playlist card) */
 function renderPlaylistDetail(plId) {
     const pl = PLAYLISTS.find(p => p.id === plId);
@@ -1025,6 +1245,7 @@ function renderPlaylistDetail(plId) {
     contentEl.innerHTML = `
         <section class="section" style="margin-top:14px">
             <div class="hero" style="background:linear-gradient(135deg,#3a1f5a 0%, #c273ed 100%); height:220px;">
+                <div class="hero__bg" style="background-image:url('${pl.cover}')"></div>
                 <div class="hero__content" style="max-width:80%; display:flex; gap:18px; align-items:center;">
                     <div style="width:160px; height:160px; border-radius:10px; background-image:url('${pl.cover}'); background-size:cover; background-position:center; box-shadow:0 12px 30px -10px rgba(0,0,0,.6);"></div>
                     <div>
@@ -1115,6 +1336,13 @@ document.addEventListener('click', e => {
         return;
     }
 
+    const onlinePl = e.target.closest('[data-online-playlist]');
+    if (onlinePl) {
+        const overlayPlay = e.target.closest('.card__overlay .play');
+        renderOnlinePlaylistDetail(onlinePl.dataset.onlinePlaylist, !!overlayPlay);
+        return;
+    }
+
     const genreCard = e.target.closest('[data-genre]');
     if (genreCard) {
         const ids = SONGS.filter(s => s.genre === genreCard.dataset.genre).map(s => s.id);
@@ -1149,38 +1377,72 @@ document.addEventListener('click', e => {
 let searchTimer;
 searchInput.addEventListener('input', e => {
     clearTimeout(searchTimer);
-    const q = e.target.value.trim().toLowerCase();
-    searchTimer = setTimeout(() => {
+    const q = e.target.value.trim();
+    const qLower = q.toLowerCase();
+    searchTimer = setTimeout(async () => {
         if (!q) {
             navigate('home');
             return;
         }
-        const results = SONGS.filter(
+
+        // Always show local results immediately
+        const localResults = SONGS.filter(
             s =>
-                s.name.toLowerCase().includes(q) ||
-                s.artist.toLowerCase().includes(q) ||
-                s.album.toLowerCase().includes(q)
+                s.name.toLowerCase().includes(qLower) ||
+                s.artist.toLowerCase().includes(qLower) ||
+                s.album.toLowerCase().includes(qLower)
         );
-        const ids = results.map(s => s.id);
+        const localIds = localResults.map(s => s.id);
+
         contentEl.innerHTML = `
             <section class="section">
-                <div class="section-head"><h2>Kết quả tìm kiếm cho "${escapeHtml(q)}" (${results.length})</h2></div>
-                ${
-                    results.length
-                        ? `<div class="song-list">${results.map(s => renderSongRow(s, ids)).join('')}</div>`
-                        : `<p style="color:var(--text-muted)">Không tìm thấy bài hát phù hợp.</p>`
-                }
+                <div class="section-head">
+                    <h2>Kết quả tìm kiếm cho "${escapeHtml(q)}"</h2>
+                </div>
+                ${Backend.online ? `
+                    <h3 class="search-subhead">
+                        <i class="fa-solid fa-cloud-arrow-down"></i>
+                        Trên Zing MP3
+                        <span class="badge badge--online">ONLINE</span>
+                    </h3>
+                    <div id="onlineResults" class="song-list"><div class="loading-row"><i class="fa-solid fa-spinner fa-spin"></i> Đang tìm trên Zing MP3...</div></div>
+                ` : ''}
+                <h3 class="search-subhead" style="margin-top:24px">
+                    <i class="fa-solid fa-folder"></i>
+                    Trong thư viện cục bộ (${localResults.length})
+                </h3>
+                ${localResults.length
+                    ? `<div class="song-list">${localResults.map(s => renderSongRow(s, localIds)).join('')}</div>`
+                    : `<p style="color:var(--text-muted); padding:8px 4px;">Không có bài phù hợp.</p>`}
             </section>
         `;
         contentEl.scrollTop = 0;
         refreshActiveStates();
-    }, 200);
+
+        if (Backend.online) {
+            try {
+                const data = await Backend.search(q);
+                const onlineSongs = (data.songs || []).map(registerSong).filter(Boolean);
+                const onlineIds = onlineSongs.map(s => s.id);
+                const target = document.getElementById('onlineResults');
+                if (target) {
+                    target.innerHTML = onlineSongs.length
+                        ? onlineSongs.map(s => renderSongRow(s, onlineIds)).join('')
+                        : '<p style="color:var(--text-muted); padding:8px 4px;">Không tìm thấy bài hát trên Zing MP3.</p>';
+                }
+                refreshActiveStates();
+            } catch (err) {
+                const target = document.getElementById('onlineResults');
+                if (target) target.innerHTML = '<p style="color:var(--text-muted); padding:8px 4px;">Lỗi khi tìm trên Zing MP3.</p>';
+            }
+        }
+    }, 250);
 });
 
 /* -----------------------------------------------------
    INIT
    ----------------------------------------------------- */
-function init() {
+async function init() {
     if (!state.queue || state.queue.length === 0) {
         state.queue = PLAYLISTS[0].songIds.slice();
         state.currentIndex = 0;
@@ -1194,6 +1456,56 @@ function init() {
     loadCurrent({ autoplay: false });
     navigate('home');
     renderQueue();
+
+    // Probe backend; if available, fetch home + chart and re-render home
+    const online = await Backend.health();
+    updateOnlineIndicator(online);
+    if (online) {
+        try {
+            const [home, chart] = await Promise.all([
+                Backend.home().catch(() => ({})),
+                Backend.chartHome().catch(() => ({}))
+            ]);
+            (home.playlists || []).forEach(pl => {
+                registerPlaylist(pl);
+                if (!ONLINE_PLAYLISTS.find(p => p.id === pl.id)) ONLINE_PLAYLISTS.push(pl);
+            });
+            (home.songs || []).forEach(s => {
+                registerSong(s);
+                if (!HOME_NEW_SONGS.includes(s.id)) HOME_NEW_SONGS.push(s.id);
+            });
+            (chart.songs || []).forEach(s => {
+                registerSong(s);
+                if (!HOME_CHART_SONGS.includes(s.id)) HOME_CHART_SONGS.push(s.id);
+            });
+            // Re-render home if user is still on home
+            if (document.querySelector('.nav-item.active')?.dataset.route === 'home') {
+                navigate('home');
+            }
+            toast('Đã kết nối Zing MP3 — có thể nghe nhạc trực tiếp!', 2500);
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
+
+function updateOnlineIndicator(online) {
+    let badge = document.getElementById('onlineBadge');
+    if (!badge) {
+        badge = document.createElement('div');
+        badge.id = 'onlineBadge';
+        badge.className = 'online-indicator';
+        document.body.appendChild(badge);
+    }
+    if (online) {
+        badge.className = 'online-indicator is-online';
+        badge.innerHTML = '<i class="fa-solid fa-circle"></i> Zing MP3 LIVE';
+        badge.title = 'Đã kết nối Zing MP3';
+    } else {
+        badge.className = 'online-indicator is-offline';
+        badge.innerHTML = '<i class="fa-solid fa-circle"></i> Offline';
+        badge.title = 'Chỉ phát nhạc cục bộ. Chạy `npm start` để nghe trực tiếp từ Zing MP3.';
+    }
 }
 
 init();
